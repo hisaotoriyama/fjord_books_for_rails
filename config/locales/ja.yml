@@ -30,6 +30,12 @@ ja:
         success: 更新しました
       destroy:
         success: 削除しました
+    layouts:
+      application:
+        Edit profile: プロフィール編集
+        Logout: ログアウト
+        Sign up: サインアップ
+        Login: ログイン
     errors:
         messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
