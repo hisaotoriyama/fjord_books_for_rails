@@ -8,6 +8,16 @@ ja:
           memo: メモ
           author: 著者
           picture: 画像
+        user:
+          name: ログイン名
+          zip: 郵便番号
+          address: 住所
+          profile: プロフィール
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード再入力 
+          current_password: 現在のパスワード
+          remember_me: ログイン状態を保持する
     title: タイトル
     memo: メモ
     author: 著者
@@ -16,10 +26,28 @@ ja:
     back: 戻る   
     edit: 編集
     destroy: 削除
+    Edit: 編集する
+    Update: アップデート
+    Cancel my account: アカウントをキャンセル
+    Unhappy?: 本当にいいですか？
+    Back: 戻る
+    Log in: ログイン
+    Sign up: サインアップ
+    characters minimum: 文字以上
+    we need your current password to confirm your changes: 現在のパスワード入力してください
+    leave blank if you don't want to change it: 変更しない場合ブランクにしてください
+    Forgot your password?: パスワード忘れましたか？
+    Send me reset password instructions: パスワードリセット手続き送信
+    final_confirm: 再確認してください
+    errors.messages.not_saved: 登録できませんでした
+    users:
+      edit:
+        final_confirm: 再確認してください
     books:
       edit:
         editing_book: 編集
       index:
+        books: 本一覧
         new_book: 本追加
         final_confirm: 再確認してください
       new:
@@ -32,6 +60,7 @@ ja:
         success: 削除しました
     layouts:
       application:
+        Logged in as: ログインユーザ
         Edit profile: プロフィール編集
         Logout: ログアウト
         Sign up: サインアップ
