@@ -1,10 +1,5 @@
 ja:
   devise:
-    Forgot your password?: パスワード忘れましたか？    
-    shared:
-      links:
-        Log in: ログイン
-        Forgot your password?: パスワード忘れましたか？
     confirmations:
       confirmed: 'アカウントを登録しました。'
       send_instructions: 'アカウントの有効化について数分以内にメールでご連絡します。'
@@ -49,7 +44,7 @@ ja:
         Unhappy?: 本当にいいですか？
         leave blank if you don't want to change it: 変更しない場合ブランクにしてください
         characters minimum: 文字以上
-        we need your current password to confirm your changes: 現在のパスワード入力してください
+        we need your current password to confirm your changes: 現在のパスワードを入力してください
         Cancel my account: アカウントをキャンセル
     sessions:
       signed_in: 'ログインしました。'

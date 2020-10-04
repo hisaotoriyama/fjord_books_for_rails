@@ -18,41 +18,39 @@ ja:
         password_confirmation: パスワード再入力 
         current_password: 現在のパスワード
         remember_me: ログイン状態を保持する
-        # Log In: ログイン
+  name: ログイン名
+  zip: 郵便番号
+  address: 住所
+  profile: プロフィール
+  email: Eメール
+  all_books: 本一覧
+
   title: タイトル
   memo: メモ
   author: 著者
-  picture: 画像     
+  picture: 画像    
+
   show: 詳細
   back: 戻る
   edit: 編集
   destroy: 削除
-  Edit: 編集する
-
   Update: アップデート
-  Back: 戻る
+
   Send me reset password instructions: パスワードリセット手続き送信
   final_confirm: 本当によろしいですか
   Logged in as: ログインユーザー：
-  profile: プロフィール
   Logout: ログアウト
   Login: ログイン
 
   Forgot your password?: パスワード忘れましたか？
-  Log in: ログイン
-  Sign up: サインアップ
+  Signup: サインアップ
 
-
-  users:
-    edit:
-      final_confirm: 本当によろしいですか
   books:
     edit:
       editing_book: 編集
     index:
       books: 本一覧
       new_book: 本追加
- 
     new:
       new_book: 本追加
     create:
@@ -61,14 +59,6 @@ ja:
       success: 更新しました
     destroy:
       success: 削除しました
-  layouts:
-    application:
-      # profile: プロフィール
-      # Logged in as: ログインユーザ
-      # Edit profile: プロフィール編集
-      # Logout: ログアウト
-      # Sign up: サインアップ
-      # Login: ログイン
   errors:
       messages:
       record_invalid: 'バリデーションに失敗しました: %{errors}'
