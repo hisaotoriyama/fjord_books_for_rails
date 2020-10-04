@@ -33,11 +33,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t("leave blank if you don't want to change it")%>)</i><br />
+    <%= f.label :password %> <i>(<%= t(".leave blank if you don't want to change it")%>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %><%= t("characters minimum")%></em>
+      <em><%= @minimum_password_length %><%= t(".characters minimum")%></em>
     <% end %>
   </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t("we need your current password to confirm your changes")%>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t(".we need your current password to confirm your changes")%>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -56,8 +56,8 @@
   </div>
 <% end %>
 
-<h3><%= t("Cancel my account")%></h3>
+<h3><%= t(".Cancel my account")%></h3>
 
-<p><%= t("Unhappy?") %> <%= button_to t("Cancel my account"), registration_path(resource_name), data: { confirm: t(".final_confirm")}, method: :delete %></p>
+<p><%= t(".Unhappy?") %> <%= button_to t(".Cancel my account"), registration_path(resource_name), data: { confirm: t(".final_confirm")}, method: :delete %></p>
 
 <%= link_to t("Back"), :back %>
