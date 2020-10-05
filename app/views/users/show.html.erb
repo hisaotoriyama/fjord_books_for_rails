@@ -1,0 +1,11 @@
+<%# <h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p> %>
+<h1>マイページ</h1>
+<p><%= t("name") %>：<%= current_user.name %></p>
+<p><%= t("email") %>：<%= current_user.email %></p>
+<p><%= t("zip") %>：<%= current_user.zip %></p>
+<p><%= t("address") %>：<%= current_user.address %></p>
+<p><%= t("profile") %>：<%= current_user.profile %></p>
+
+<%= link_to t("edit") , edit_user_registration_path %> |
+<%= link_to t("all_books") , books_path %> 

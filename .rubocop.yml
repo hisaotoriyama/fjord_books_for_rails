@@ -271,3 +271,8 @@ Performance/DeletePrefix:
 
 Performance/DeleteSuffix:
   Enabled: true
+
+  #追加
+Documentation:
+  Enabled: false
+  
