@@ -6,8 +6,9 @@ module Users
     # devise :omniauthable, omniauth_providers: [:twitter]
 
     # You should also create an action method in this controller like this:
-    # def twitter
-    # end
+    def github
+      callback
+    end
 
     # More info at:
     # https://github.com/heartcombo/devise#omniauth
@@ -28,5 +29,17 @@ module Users
     # def after_omniauth_failure_path_for(scope)
     #   super(scope)
     # end
+
+    private
+      def callback
+        @user = User.find_or_create_for_oauth(request.env['omniauth.auth'])
+
+        if @user.persisted?
+          sign_in_and_redirect @user
+        else
+          session['devise.user_attributes'] = @user.attributes
+          redirect_to new_user_registration_url
+        end
+      end
   end
 end
