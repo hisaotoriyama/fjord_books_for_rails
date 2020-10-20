@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   RECORD_NUMBER = 10
 
   def index
-    @books = Book.page(params[:page]).per(RECORD_NUMBER)
+    @books = current_user.books.page(params[:page]).per(RECORD_NUMBER)
   end
 
   # GET /books/1
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.new(book_params)
 
     respond_to do |format|
       if @book.save
