@@ -16,7 +16,7 @@ module Users
     end
 
     def after_update_path_for(resource)
-      users_path(id: current_user.id)
+      user_path(id: current_user.id)
     end
 
     def configure_sign_up_params
