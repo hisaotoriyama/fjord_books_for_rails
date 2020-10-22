@@ -43,4 +43,3 @@ yarn-debug.log*
 .DS_Store
 
 /.env
-/clone_fjord_books_for_rails.git
