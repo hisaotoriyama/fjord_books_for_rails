@@ -21,7 +21,7 @@ class User < ApplicationRecord
     "#{auth.uid}-#{auth.provider}@example.com"
   end
 
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
+  # def self.create_unique_string
+  #   SecureRandom.uuid
+  # end
 end
