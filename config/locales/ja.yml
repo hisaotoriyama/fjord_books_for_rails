@@ -18,12 +18,20 @@ ja:
         password_confirmation: パスワード再入力 
         current_password: 現在のパスワード
         remember_me: ログイン状態を保持する
+        
   name: ログイン名
   zip: 郵便番号
   address: 住所
   profile: プロフィール
   email: Eメール
   all_books: 本一覧
+  my_page: マイページ
+  following_users: フォロー ユーザー
+  followed_users: フォロワー ユーザー
+
+  users: ユーザーリスト
+  id: ID
+  follow: フォロー
 
   title: タイトル
   memo: メモ
@@ -41,7 +49,8 @@ ja:
   Logged in as: ログインユーザー：
   Logout: ログアウト
   Login: ログイン
-
+  User Detail: ユーザー詳細
+  List of Users: ユーザーリスト
   Forgot your password?: パスワード忘れましたか？
   Signup: サインアップ
 
