@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   def following?(user)
     followed_user.include?(user)
+  end
     
   has_one_attached :avatar
 
