@@ -19,9 +19,9 @@
         <td><%= user.email %></td>
 
         <% if current_user.following?(user) %>
-          <td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
+          <td><%= link_to t("dounfollow"), unfollow_path(user.id), method: :POST %></td>
         <% else %>
-          <td><%= link_to 'フォローする', follow_path(user.id), method: :POST %></td>
+          <td><%= link_to t("dofollow"), follow_path(user.id), method: :POST %></td>
         <% end %>
 
       </tr>

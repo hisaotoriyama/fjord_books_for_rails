@@ -28,6 +28,11 @@ ja:
   my_page: マイページ
   following_users: フォロー ユーザー
   followed_users: フォロワー ユーザー
+  followed_users_number: フォロー数
+  follower_users_number: フォロワー数
+  dofollow: フォローする
+  dounfollow: フォロー外す
+  new_book: 本追加
 
   users: ユーザーリスト
   id: ID
