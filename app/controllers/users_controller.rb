@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
   USERBOOKS_NUMBER = 8
 
   def show

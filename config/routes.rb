@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations"
   }
   resources :books
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
 
   post "follow/:id" => "relationships#follow", as: "follow"
   post "unfollow/:id" => "relationships#unfollow", as: "unfollow"
+
 end

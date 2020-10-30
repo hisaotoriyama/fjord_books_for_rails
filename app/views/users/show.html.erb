@@ -1,3 +1,8 @@
+<p><%= t("name") %>：<%= current_user.name %></p>
+<% if @user.avatar.attached? %>
+  <p><%= image_tag @user.avatar , width: 150%></p>
+<% end %>
+
 <% if @user == current_user %>
   <h1><%= t("my_page") %></h1>
     <p><%= t("name") %>：<%= current_user.name %></p>
@@ -34,6 +39,7 @@
       <% end %>
     </tbody>
   </table>
+
 <%= link_to t("new_book"), new_book_path %>
 <%= paginate @usersbooks %>
 <%= page_entries_info @usersbooks%>

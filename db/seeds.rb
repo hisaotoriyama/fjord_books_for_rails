@@ -9,7 +9,6 @@
     )
   end
 
-
 20.times do |n|
   Book.create!(
     title: "test book No.#{n + 1}",
@@ -18,7 +17,6 @@
     user_id: 19
   )
 end
-
 
 20.times do |n|
   Book.create!(
@@ -29,7 +27,6 @@ end
   )
 end
 
-
 20.times do |n|
   Book.create!(
     title: "test book No.#{n + 1}",
@@ -38,7 +35,6 @@ end
     user_id: 21
   )
 end
-
 
 20.times do |n|
   Book.create!(
@@ -49,7 +45,6 @@ end
   )
 end
 
-
 20.times do |n|
   Book.create!(
     title: "test book No.#{n + 1}",
@@ -59,7 +54,6 @@ end
   )
 end
 
-
 20.times do |n|
   Book.create!(
     title: "test book No.#{n + 1}",
@@ -68,7 +62,6 @@ end
     user_id: 24
   )
 end
-
 
 20.times do |n|
   Book.create!(
