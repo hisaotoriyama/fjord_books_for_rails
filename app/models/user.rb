@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :reports, dependent: :destroy
+
   attr_accessor :current_password
 
   def self.find_for_github_oauth(auth, signed_in_resource = nil)
