@@ -30,19 +30,19 @@
     </thead>
 
     <tbody>
-      <% @usersbooks.each do |userbook| %>
+      <% @user_books.each do |user_book| %>
         <tr>
-          <td><%= userbook.title %></td>
-          <td><%= userbook.memo %></td>
-          <td><%= userbook.author %></td>
+          <td><%= user_book.title %></td>
+          <td><%= user_book.memo %></td>
+          <td><%= user_book.author %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
 <%= link_to t("new_book"), new_book_path %>
-<%= paginate @usersbooks %>
-<%= page_entries_info @usersbooks%>
+<%= paginate @user_books %>
+<%= page_entries_info @user_books%>
 
 <h2><%= t("following_users") %></h2>
   <p><%= t("followed_users_number") %><%= @user.followed_user.count %></p>

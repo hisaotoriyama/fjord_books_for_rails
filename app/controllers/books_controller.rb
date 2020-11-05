@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   BOOK_PER_PAGE_SIZE = 10
 
   def index
-    @books = current_user.books.page(params[:page]).per(BOOK_PER_PAGE_SIZE)
+    @books = current_user.books.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
   end
 
   def show
