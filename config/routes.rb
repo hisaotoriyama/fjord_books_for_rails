@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   resources :books
   resources :users, only: [:show, :index]
   root to: "books#index"
-
   post "follow/:id" => "relationships#follow", as: "follow"
   post "unfollow/:id" => "relationships#unfollow", as: "unfollow"
-
 end
