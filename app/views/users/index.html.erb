@@ -1,6 +1,4 @@
-<% if user_signed_in? %>
 <h1><%= t("users") %></h1>
-
 <table>
   <thead>
     <tr>
@@ -17,18 +15,15 @@
         <td><%= user.id %></td>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
-
         <% if current_user.following?(user) %>
-          <td><%= link_to t("dounfollow"), unfollow_path(user.id), method: :POST %></td>
+          <td><%= link_to t("do_unfollow"), unfollow_path(user.id), method: :post %></td>
         <% else %>
-          <td><%= link_to t("dofollow"), follow_path(user.id), method: :POST %></td>
+          <td><%= link_to t("do_follow"), follow_path(user.id), method: :post %></td>
         <% end %>
-
       </tr>
     <% end %>
   </tbody>
 </table>
-<% end %>
 
 <%= paginate @users %>
 <%= page_entries_info @users%>

@@ -2,9 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-
   BOOK_PER_PAGE_SIZE = 10
-
   def index
     @books = current_user.books.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
   end
@@ -21,7 +19,6 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: t(".success") }
