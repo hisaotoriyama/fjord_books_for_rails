@@ -42,18 +42,18 @@
 <%= paginate @user_books %>
 <%= page_entries_info @user_books%>
 
-<h2><%= t("following_users") %></h2>
-<p><%= t("followed_users_number") %><%= @user.followed_user.count %></p>
+<h2><%= t("following_users_list") %></h2>
+<p><%= t("following_users_numbers") %><%= @user.followings.count %></p>
 <ul>
-<% @user.followed_user.each do |user| %>
-  <li><%= link_to user.name, user %></li>
+<% @user.followings.each do |user| %>
+  <li><%= link_to user.name, user.name %></li>
 <% end %>
 </ul>
 
-<h2><%= t("followed_users") %></h2>
-<p><%= t("follower_users_number") %><%= @user.follower_user.count %></p>
+<h2><%= t("follower_users_list") %></h2>
+<p><%= t("follower_users_numbers") %><%= @user.followers.count %></p>
 <ul>
-<% @user.follower_user.each do |user| %>
-  <li><%= link_to user.name, user %></li>
+<% @user.followers.each do |user| %>
+  <li><%= link_to user.name, user.name%></li> 
 <% end %>
 </ul>

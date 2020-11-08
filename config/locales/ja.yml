@@ -31,8 +31,8 @@ ja:
   followed_users: フォロワー ユーザー
   followed_users_number: フォロー数
   follower_users_number: フォロワー数
-  do_follow: フォローする
-  do_unfollow: フォロー外す
+  # do_follow: フォローする
+  # do_unfollow: フォロー外す
   new_book: 本追加
 
   users: ユーザーリスト
