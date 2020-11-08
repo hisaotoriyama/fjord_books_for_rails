@@ -102,6 +102,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.9.0)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
@@ -307,6 +309,7 @@ DEPENDENCIES
   carrierwave
   devise
   dotenv-rails
+  faker
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
