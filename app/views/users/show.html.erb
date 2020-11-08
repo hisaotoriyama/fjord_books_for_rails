@@ -1,4 +1,4 @@
-<p><%= t("name") %>：<%= current_user.name %></p>
+<p><%= t("login_user_name") %>：<%= current_user.name %></p>
 <% if @user.avatar.attached? %>
   <p><%= image_tag @user.avatar , width: 150 %></p>
 <% end %>
@@ -15,6 +15,12 @@
 
 <% if @user == current_user %>
   <%= link_to t("edit") , edit_user_registration_path %> 
+<% else %>
+  <% if current_user.following?(@user) %>
+    <td><%= link_to t("do_unfollow"), unfollow_path(@user.id), method: :post %></td>
+  <% else %>
+    <td><%= link_to t("do_follow"), follow_path(@user.id), method: :post %></td>
+  <% end %>
 <% end %>
 
 <h2><%= t("all_books") %></h2>

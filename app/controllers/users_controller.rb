@@ -10,4 +10,12 @@ class UsersController < ApplicationController
   def index
     @users = User.order(:created_at, :id).page(params[:page]).per(USER_PER_PAGE_SIZE)
   end
+
+  def following
+    @user = User.find(params[:id])
+  end
+
+  def follower
+    @user = User.find(params[:id])
+  end
 end

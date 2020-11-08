@@ -1,0 +1,7 @@
+<h2><%= t("following_users_list") %></h2>
+<p><%= t("following_users_numbers") %><%= @user.followings.count %></p>
+<ul>
+<% @user.followings.each do |user| %>
+  <li><%= link_to user.name, user.name %></li>
+<% end %>
+</ul>
