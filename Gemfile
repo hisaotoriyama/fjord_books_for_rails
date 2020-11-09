@@ -49,6 +49,7 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec"
   gem "rubocop-packaging"
+  gem "rubocop-fjord", require: false
 end
 
 group :test do
@@ -70,4 +71,4 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-github"
 gem "dotenv-rails"
-gem 'faker'
+gem "faker"
