@@ -2,6 +2,6 @@
 <p><%= t("follower_users_numbers") %><%= @user.followers.count %></p>
 <ul>
 <% @user.followers.each do |user| %>
-  <li><%= link_to user.name, user.name%></li> 
+  <li><%= link_to user.name, user %></li> 
 <% end %>
 </ul>
