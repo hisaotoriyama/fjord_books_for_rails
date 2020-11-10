@@ -1,13 +1,13 @@
-<h1><%= t("users") %></h1>
+<h1><%= t(".users") %></h1>
 <table>
   <thead>
     <tr>
-      <th><%= t("id") %></th>
-      <th><%= t("name") %></th>
-      <th><%= t("email") %></th>
-      <th><%= t("follow") %></th>
-      <th><%= t("following_list") %></th>
-      <th><%= t("follower_list") %></th>
+      <th><%= User.human_attribute_name :id %></th>
+      <th><%= User.human_attribute_name :name %></th>
+      <th><%= User.human_attribute_name :email %></th>
+      <th><%= t(".follow") %></th>
+      <th><%= t(".following") %></th>
+      <th><%= t(".follower") %></th>
     </tr>
   </thead>
 
@@ -21,13 +21,13 @@
            <td>-----</td>
         <% else %>
           <% if current_user.following?(user) %>
-            <td><%= link_to t("do_unfollow"), unfollow_path(user.id), method: :post %></td>
+            <td><%= link_to t(".do_unfollow"), unfollow_path(user.id), method: :post %></td>
           <% else %>
-            <td><%= link_to t("do_follow"), follow_path(user.id), method: :post %></td>
+            <td><%= link_to t(".do_follow"), follow_path(user.id), method: :post %></td>
           <% end %>
         <% end %>
-        <td><%= link_to t("following_list"), following_user_path(user.id) %></td>
-        <td><%= link_to t("follower_list"), follower_user_path(user.id) %></td>
+        <td><%= link_to t(".show_list"), following_user_path(user.id) %></td>
+        <td><%= link_to t(".show_list"), follower_user_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>
