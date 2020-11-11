@@ -17,15 +17,15 @@
         <td><%= book.memo %></td>
         <td><%= book.author %></td>
         <td><%= book.picture %></td>
-        <td><%= link_to t(".show"), book %></td>
-        <td><%= link_to t(".edit"), edit_book_path(book) %></td>
-        <td><%= link_to t(".destroy"), book, method: :delete, data: { confirm: t(".final_confirm") } %></td>
+        <td><%= link_to t("link.show"), book %></td>
+        <td><%= link_to t("link.edit"), edit_book_path(book) %></td>
+        <td><%= link_to t("link.destroy"), book, method: :delete, data: { confirm: t(".final_confirm") } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t(".new_book"), new_book_path %>
+<%= link_to t("link.new_book"), new_book_path %>
 
 <%= paginate @books %>
 <%= page_entries_info @books %>

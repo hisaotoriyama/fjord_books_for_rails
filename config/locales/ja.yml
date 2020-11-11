@@ -33,27 +33,16 @@ ja:
   layouts:
     application:
       logged_in_as: ログインユーザー：
-      logout: ログアウト
-      login: ログイン
-      signup: サインアップ
   books:
     index:
       books: 書籍一覧
-      show: 表示
-      edit: 編集
-      destroy: 削除
       new_book: 新規書籍登録
       final_confirm: 本当によろしいですか?
     new:
       new_book: 新規書籍登録
-      back: 戻る
     edit:
       editing_book: 本内容編集
-      show: 表示
-      back: 戻る  
     show:
-      edit: 編集
-      back: 戻る
     create:
       success: 書籍新規登録できました。
     update:
@@ -66,30 +55,31 @@ ja:
       my_page: ログインユーザーページ
       other_user_page: 他ユーザーページ
       all_books_of_user: ユーザ選択書籍
-      edit: 編集
-      new_book: 新規書籍追加
-      do_follow: フォローする
-      do_unfollow: フォロー外す
     index:
       users: ユーザー一覧
-      all_users: ホゲホゲ
       follow: フォロー
       following: フォロー先
       follower: フォロワー先
-      do_follow: フォローする
-      do_unfollow: フォロー外す
-      show_list: リスト表示
     follower:
       follower_users_list: フォロワーリスト
       follower_numbers: フォロワー数
     following:
       following_users_list: フォローリスト
       following_numbers: フォロー数
-  
-  # 以上確認済み 
-
-  final_confirm: 本当によろしいですか?
-
+  link:
+    show: 表示する
+    edit: 編集する
+    destroy: 削除する
+    back: 戻る
+    do_follow: フォローする
+    do_unfollow: フォロー外す
+    logout: ログアウト
+    login: ログイン
+    signup: サインアップ
+    show_list: リスト表示
+    new_book: 新規書籍追加
+    update: アップデート
+    sign_in_with: "%{provider}でログイン"
   errors:
     messages:
     record_invalid: 'バリデーションに失敗しました: %{errors}'

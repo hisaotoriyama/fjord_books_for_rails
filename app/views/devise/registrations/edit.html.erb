@@ -1,4 +1,4 @@
-<h2><%= t(".edit") %> </h2>
+<h2><%= t("link.edit") %> </h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -57,7 +57,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t(".update") %>
+    <%= f.submit t("link.update") %>
   </div>
 <% end %>
 
@@ -65,4 +65,4 @@
 
 <p><%= t(".unhappy?") %> <%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".final_confirm")}, method: :delete %></p>
 
-<%= link_to t(".back"), :back %>
+<%= link_to t("link.back"), :back %>
