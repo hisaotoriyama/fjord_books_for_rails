@@ -46,7 +46,7 @@
 
 <%= link_to t("new_book"), new_book_path %>
 <%= paginate @user_books %>
-<%= page_entries_info @user_books%>
+<%= page_entries_info @user_books %>
 
 <h2><%= t("following_users_list") %></h2>
 <p><%= t("following_users_numbers") %><%= @user.followings.count %></p>
