@@ -84,8 +84,8 @@ ja:
     messages:
     record_invalid: 'バリデーションに失敗しました: %{errors}'
     restrict_dependent_destroy:
-        has_one: "%{record}が存在しているので削除できません"
-        has_many: "%{record}が存在しているので削除できません"
+      has_one: "%{record}が存在しているので削除できません"
+      has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
       - 日
@@ -244,12 +244,12 @@ ja:
     decimal_units:
     format: "%n %u"
     units:
-        billion: 十億
-        million: 百万
-        quadrillion: 千兆
-        thousand: 千
-        trillion: 兆
-        unit: ''
+      billion: 十億
+      million: 百万
+      quadrillion: 千兆
+      thousand: 千
+      trillion: 兆
+      unit: ''
     format:
     delimiter: ''
     precision: 3
@@ -258,13 +258,13 @@ ja:
     storage_units:
     format: "%n%u"
     units:
-        byte: バイト
-        eb: EB
-        gb: GB
-        kb: KB
-        mb: MB
-        pb: PB
-        tb: TB
+      byte: バイト
+      eb: EB
+      gb: GB
+      kb: KB
+      mb: MB
+      pb: PB
+      tb: TB
   percentage:
     format:
     delimiter: ''
