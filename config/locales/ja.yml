@@ -75,9 +75,9 @@ ja:
   #     success: 更新しました
   #   destroy:
   #     success: 削除しました
-  errors:
+    errors:
       messages:
-      record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
       restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
