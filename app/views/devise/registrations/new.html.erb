@@ -1,4 +1,4 @@
-<h2><%= t("link.signup")%></h2>
+<h2><%= t("views.common.signup")%></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t("link.signup") %>
+    <%= f.submit t("views.common.signup") %>
   </div>
 <% end %>
 

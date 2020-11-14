@@ -66,20 +66,21 @@ ja:
     following:
       following_users_list: フォローリスト
       following_numbers: フォロー数
-  link:
-    show: 表示する
-    edit: 編集する
-    destroy: 削除する
-    back: 戻る
-    do_follow: フォローする
-    do_unfollow: フォロー外す
-    logout: ログアウト
-    login: ログイン
-    signup: サインアップ
-    show_list: リスト表示
-    new_book: 新規書籍追加
-    update: アップデート
-    sign_in_with: "%{provider}でログイン"
+  views:
+    common:
+      show: 表示する
+      edit: 編集する
+      destroy: 削除する
+      back: 戻る
+      do_follow: フォローする
+      do_unfollow: フォロー外す
+      logout: ログアウト
+      login: ログイン
+      signup: サインアップ
+      show_list: リスト表示
+      new_book: 新規書籍追加
+      update: アップデート
+      sign_in_with: "%{provider}でログイン"
   errors:
     messages:
     record_invalid: 'バリデーションに失敗しました: %{errors}'

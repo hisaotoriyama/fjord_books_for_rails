@@ -15,12 +15,12 @@
 <p><%= User.human_attribute_name :profile %>：<%= @user.profile %></p>
 
 <% if @user == current_user %>
-  <%= link_to t("link.edit") , edit_user_registration_path %> 
+  <%= link_to t("views.common.edit") , edit_user_registration_path %> 
 <% else %>
   <% if current_user.following?(@user) %>
-    <td><%= link_to t("link.do_unfollow"), unfollow_path(@user.id), method: :post %></td>
+    <td><%= link_to t("views.common.do_unfollow"), unfollow_path(@user.id), method: :post %></td>
   <% else %>
-    <td><%= link_to t("link.do_follow"), follow_path(@user.id), method: :post %></td>
+    <td><%= link_to t("views.common.do_follow"), follow_path(@user.id), method: :post %></td>
   <% end %>
 <% end %>
 
@@ -45,7 +45,7 @@
   </tbody>
 </table>
 
-<%= link_to t("link.new_book"), new_book_path %>
+<%= link_to t("views.common.new_book"), new_book_path %>
 <%= paginate @user_books %>
 <%= page_entries_info @user_books %>
 
