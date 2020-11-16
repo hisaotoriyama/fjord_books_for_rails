@@ -21,18 +21,16 @@ class CommentsController < ApplicationController
   def edit
   end
 
-  # POST /comments
-  # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
-
+    resource, id = request.path.split('/')[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+    new_comment_params = comment_params.merge!(:user_id =>  current_user.id)
+    @comment = @commentable.comments.new(new_comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to url_for(@commentable), notice: 'Comment was successfully CREATED.' }
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        p "Saveできません"
       end
     end
   end
@@ -62,13 +60,13 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:body, :commentable_id, :commentable_type)
-    end
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+  end
 end
