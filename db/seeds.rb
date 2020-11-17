@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
-50.times do |n|
-  Book.create!(
-    title: "test book No.#{n + 1}",
-    memo: "contents#{n + 1}",
-    author: "test author No.#{n + 1}",
-  )
+5.times do |n|
+  user = User.create!(email: "sample-#{n}@example.com", name: Faker::Name.name, password: 123456)
+  5.times do
+    user.books.create!(
+      title: Faker::Book.title,
+      memo: Faker::Book.genre,
+      author: Faker::Book.author,
+    )
+  end
 end

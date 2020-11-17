@@ -1,67 +1,83 @@
 ja:
   activerecord:
-    models:
-      book: ブック
-    attributes:
-      book:
-        title: タイトル
-        memo: メモ
-        author: 著者
-        picture: 画像
-      user:
-        name: ログイン名
-        zip: 郵便番号
-        address: 住所
-        profile: プロフィール
-        email: Eメール
-        password: パスワード
-        avatar: プロフィール画像
-        password_confirmation: パスワード再入力 
-        current_password: 現在のパスワード
-        remember_me: ログイン状態を保持する
-  name: ログイン名
-  zip: 郵便番号
-  address: 住所
-  profile: プロフィール
-  email: Eメール
-  all_books: 本一覧
+  #   models:
+  #     book: ブック
+  #   attributes:
+  #     book:
+  #       title: タイトル
+  #       memo: メモ
+  #       author: 著者
+  #       picture: 画像
+  #     user:
+  #       name: ログイン名
+  #       zip: 郵便番号
+  #       address: 住所
+  #       profile: プロフィール
+  #       email: Eメール
+  #       password: パスワード
+  #       avatar: プロフィール画像
+  #       password_confirmation: パスワード再入力
+  #       current_password: 現在のパスワード
+  #       remember_me: ログイン状態を保持する
+        
+  # name: ログイン名
+  # zip: 郵便番号
+  # address: 住所
+  # profile: プロフィール
+  # email: Eメール
+  # all_books: 本一覧
+  # my_page: マイページ
+  # following_users: フォロー ユーザー
+  # followed_users: フォロワー ユーザー
+  # followed_users_number: フォロー数
+  # follower_users_number: フォロワー数
+  # # do_follow: フォローする
+  # # do_unfollow: フォロー外す
+  # new_book: 本追加
 
-  title: タイトル
-  memo: メモ
-  author: 著者
-  picture: 画像    
+  # users: ユーザーリスト
+  # id: ID
+  # follow: フォロー
 
-  show: 詳細
-  back: 戻る
-  edit: 編集
-  destroy: 削除
-  Update: アップデート
+  # title: タイトル
+  # memo: メモ
+  # author: 著者
+  # picture: 画像
 
-  Send me reset password instructions: パスワードリセット手続き送信
-  final_confirm: 本当によろしいですか
-  Logged in as: ログインユーザー：
-  Logout: ログアウト
-  Login: ログイン
-  Forgot your password?: パスワード忘れましたか？
-  Signup: サインアップ
+  # show: 詳細
+  # back: 戻る
+  # edit: 編集
+  # destroy: 削除
+  # Update: アップデート
 
-  books:
-    edit:
-      editing_book: 編集
-    index:
-      books: 本一覧
-      new_book: 本追加
-    new:
-      new_book: 本追加
-    create:
-      success: 本を登録しました
-    update:
-      success: 更新しました
-    destroy:
-      success: 削除しました
-  errors:
+  # Send me reset password instructions: パスワードリセット手続き送信
+  # final_confirm: 本当によろしいですか
+  # Logged in as: ログインユーザー：
+  # Logout: ログアウト
+  # Login: ログイン
+  # User Detail: ユーザー詳細
+  # List of Users: ユーザーリスト
+
+  # Forgot your password?: パスワード忘れましたか？
+  # Signup: サインアップ
+
+  # books:
+  #   edit:
+  #     editing_book: 編集
+  #   index:
+  #     books: 本一覧
+  #     new_book: 本追加
+  #   new:
+  #     new_book: 本追加
+  #   create:
+  #     success: 本を登録しました
+  #   update:
+  #     success: 更新しました
+  #   destroy:
+  #     success: 削除しました
+    errors:
       messages:
-      record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
       restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"

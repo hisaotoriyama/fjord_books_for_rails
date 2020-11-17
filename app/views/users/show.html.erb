@@ -1,12 +1,65 @@
-<h1>マイページ</h1>
-<p><%= t("name") %>：<%= current_user.name %></p>
+<p><%= t("login_user_name") %>：<%= current_user.name %></p>
 <% if @user.avatar.attached? %>
-  <p><%= image_tag @user.avatar , width: 150%></p>
+  <p><%= image_tag @user.avatar , width: 150 %></p>
 <% end %>
-<p><%= t("email") %>：<%= current_user.email %></p>
-<p><%= t("zip") %>：<%= current_user.zip %></p>
-<p><%= t("address") %>：<%= current_user.address %></p>
-<p><%= t("profile") %>：<%= current_user.profile %></p>
 
-<%= link_to t("edit") , edit_user_registration_path %> |
-<%= link_to t("all_books") , books_path %> 
+<% if @user == current_user %>
+  <h1><%= t("my_page") %></h1>
+<% end %>
+
+<p><%= t("name") %>：<%= @user.name %></p>
+<p><%= t("email") %>：<%= @user.email %></p>
+<p><%= t("zip") %>：<%= @user.zip %></p>
+<p><%= t("address") %>：<%= @user.address %></p>
+<p><%= t("profile") %>：<%= @user.profile %></p>
+
+<% if @user == current_user %>
+  <%= link_to t("edit") , edit_user_registration_path %> 
+<% else %>
+  <% if current_user.following?(@user) %>
+    <td><%= link_to t("do_unfollow"), unfollow_path(@user.id), method: :post %></td>
+  <% else %>
+    <td><%= link_to t("do_follow"), follow_path(@user.id), method: :post %></td>
+  <% end %>
+<% end %>
+
+<h2><%= t("all_books") %></h2>
+<table>
+  <thead>
+    <tr>
+      <th><%= t("title") %></th>
+      <th><%= t("memo") %></th>
+      <th><%= t("author") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_books.each do |user_book| %>
+      <tr>
+        <td><%= user_book.title %></td>
+        <td><%= user_book.memo %></td>
+        <td><%= user_book.author %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t("new_book"), new_book_path %>
+<%= paginate @user_books %>
+<%= page_entries_info @user_books %>
+
+<h2><%= t("following_users_list") %></h2>
+<p><%= t("following_users_numbers") %><%= @user.followings.count %></p>
+<ul>
+<% @user.followings.each do |user| %>
+  <li><%= link_to user.name, user %></li>
+<% end %>
+</ul>
+
+<h2><%= t("follower_users_list") %></h2>
+<p><%= t("follower_users_numbers") %><%= @user.followers.count %></p>
+<ul>
+<% @user.followers.each do |user| %>
+  <li><%= link_to user.name, user %></li> 
+<% end %>
+</ul>
