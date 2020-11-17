@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :userfind, except: :index
+  before_action :set_user, except: :index
   USER_BOOKS_PER_PAGE_SIZE = 5
 
   def show
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   private
 
-  def userfind
+  def set_user
     @user = User.find(params[:id])
   end
 end

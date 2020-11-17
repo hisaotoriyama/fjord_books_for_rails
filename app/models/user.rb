@@ -13,11 +13,11 @@ class User < ApplicationRecord
   attr_accessor :current_password
   
   def follow(user)
-    active_relationships.create(follower_id: user.id)
+    active_relationships.create(follower: user)
   end
 
   def unfollow(user)
-    active_relationships.find_by(follower_id: user.id).destroy
+    active_relationships.find_by(follower: user).destroy
   end
 
   def following?(user)
