@@ -1,35 +1,36 @@
-<p><%= t("login_user_name") %>：<%= current_user.name %></p>
 <% if @user.avatar.attached? %>
   <p><%= image_tag @user.avatar , width: 150 %></p>
 <% end %>
 
 <% if @user == current_user %>
-  <h1><%= t("my_page") %></h1>
+  <h1><%= t(".my_page") %></h1>
+<% else %>
+  <h1><%= t(".other_user_page") %></h1>
 <% end %>
 
-<p><%= t("name") %>：<%= @user.name %></p>
-<p><%= t("email") %>：<%= @user.email %></p>
-<p><%= t("zip") %>：<%= @user.zip %></p>
-<p><%= t("address") %>：<%= @user.address %></p>
-<p><%= t("profile") %>：<%= @user.profile %></p>
+<p><%= User.human_attribute_name :name %>：<%= @user.name %></p>
+<p><%= User.human_attribute_name :email %>：<%= @user.email %></p>
+<p><%= User.human_attribute_name :zip %>：<%= @user.zip %></p>
+<p><%= User.human_attribute_name :address %>：<%= @user.address %></p>
+<p><%= User.human_attribute_name :profile %>：<%= @user.profile %></p>
 
 <% if @user == current_user %>
-  <%= link_to t("edit") , edit_user_registration_path %> 
+  <%= link_to t("views.common.edit") , edit_user_registration_path %> 
 <% else %>
   <% if current_user.following?(@user) %>
-    <td><%= link_to t("do_unfollow"), unfollow_path(@user.id), method: :post %></td>
+    <td><%= link_to t("views.common.do_unfollow"), unfollow_path(@user.id), method: :post %></td>
   <% else %>
-    <td><%= link_to t("do_follow"), follow_path(@user.id), method: :post %></td>
+    <td><%= link_to t("views.common.do_follow"), follow_path(@user.id), method: :post %></td>
   <% end %>
 <% end %>
 
-<h2><%= t("all_books") %></h2>
+<h2><%= t(".all_books_of_user") %></h2>
 <table>
   <thead>
     <tr>
-      <th><%= t("title") %></th>
-      <th><%= t("memo") %></th>
-      <th><%= t("author") %></th>
+      <th><%= Book.human_attribute_name :title %></th>
+      <th><%= Book.human_attribute_name :memo %></th>
+      <th><%= Book.human_attribute_name :author %></th>
     </tr>
   </thead>
 
@@ -44,20 +45,20 @@
   </tbody>
 </table>
 
-<%= link_to t("new_book"), new_book_path %>
+<%= link_to t("views.common.new_book"), new_book_path %>
 <%= paginate @user_books %>
 <%= page_entries_info @user_books %>
 
-<h2><%= t("following_users_list") %></h2>
-<p><%= t("following_users_numbers") %><%= @user.followings.count %></p>
+<h2><%= Relationship.human_attribute_name :following %></h2>
+<p><%= Relationship.human_attribute_name :following_numbers %>：<%= @user.followings.count %></p>
 <ul>
 <% @user.followings.each do |user| %>
   <li><%= link_to user.name, user %></li>
 <% end %>
 </ul>
 
-<h2><%= t("follower_users_list") %></h2>
-<p><%= t("follower_users_numbers") %><%= @user.followers.count %></p>
+<h2><%= Relationship.human_attribute_name :follower %></h2>
+<p><%= Relationship.human_attribute_name :follower_numbers %>：<%= @user.followers.count %></p>
 <ul>
 <% @user.followers.each do |user| %>
   <li><%= link_to user.name, user %></li> 
