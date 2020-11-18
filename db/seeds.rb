@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-USER_ID_RANGE = (18..25).freeze
-USER_ID_RANGE.each do |num|
-  5.times do |_n|
-    Book.create!(
+5.times do |n|
+  user = User.create!(email: "sample-#{n}@example.com", name: Faker::Name.name, password: 123456)
+  5.times do
+    user.books.create!(
       title: Faker::Book.title,
       memo: Faker::Book.genre,
       author: Faker::Book.author,
-      user_id: num
     )
   end
 end

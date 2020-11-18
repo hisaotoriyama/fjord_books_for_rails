@@ -12,12 +12,12 @@ class User < ApplicationRecord
   has_one_attached :avatar
   attr_accessor :current_password
 
-  def follow(user_id)
-    active_relationships.create(follower_id: user_id)
+  def follow(user)
+    active_relationships.create(follower: user)
   end
 
-  def unfollow(user_id)
-    active_relationships.find_by(follower_id: user_id).destroy
+  def unfollow(user)
+    active_relationships.find_by(follower: user).destroy
   end
 
   def following?(user)
