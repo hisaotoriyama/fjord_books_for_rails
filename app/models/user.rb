@@ -1,19 +1,31 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable
-
-  has_one_attached :avatar
-
+  has_many :books, dependent: :destroy
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: :following_id, dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :following
   has_many :reports, dependent: :destroy
-
+  has_one_attached :avatar
   attr_accessor :current_password
 
-  def self.find_for_github_oauth(auth, signed_in_resource = nil)
+  def follow(user)
+    active_relationships.create(follower: user)
+  end
+
+  def unfollow(user)
+    active_relationships.find_by(follower: user).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+
+  def self.find_for_github_oauth(auth, _signed_in_resource = nil)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.name = auth.info.name
       user.email = User.dummy_email(auth)

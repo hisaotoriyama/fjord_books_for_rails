@@ -1,16 +1,12 @@
 # frozen_string_literal: true
 
-users = 5.times.map do |n|
-  User.create!(email: "sample-#{n}@example.com", name: Faker::Name.name, password: 123456)
-end
-
-users.each do |user|
-  5.times do |n|
-    Book.create!(
+5.times do |n|
+  user = User.create!(email: "sample-#{n}@example.com", name: Faker::Name.name, password: 123456)
+  5.times do
+    user.books.create!(
       title: Faker::Book.title,
       memo: Faker::Book.genre,
       author: Faker::Book.author,
-      user_id: user.id
     )
   end
 end

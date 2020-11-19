@@ -32,6 +32,14 @@ ja:
       send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。"
       updated: 'パスワードが正しく変更されました。'
       updated_not_active: 'パスワードが正しく変更されました。'
+      new:
+        forgot_your_password?: パスワード忘れましたか？
+        send_me_reset_password_instructions: パスワードリセット
+      edit:
+        new_password: 新パスワード
+        confirm_new_password: パスワード再確認
+        change_my_password: パスワード変更
+        characters_minimum: 文字以上で入力してください。
     registrations:
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
       signed_up: 'アカウント登録が完了しました。'
@@ -41,25 +49,30 @@ ja:
       update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
       updated: 'アカウント情報を変更しました。'
       edit:
-        Unhappy?: 本当にいいですか？
-        leave blank if you don't want to change it: 変更しない場合ブランクにしてください
-        characters minimum: 文字以上
-        we need your current password to confirm your changes: 現在のパスワードを入力してください
-        Cancel my account: アカウントをキャンセル
+        unhappy?: 本当にいいですか？
+        leave_blank_if_you_don't_want_to_change_it: 変更しない場合ブランクにしてください
+        characters_minimum: 文字以上で入力してください。
+        we_need_your_current_password_to_confirm_your_changes: 現在のパスワードを入力してください
+        cancel_my_account: アカウントをキャンセル
+        final_confirm: 本当によろしいですか?
+      new:
+        characters_minimum: 文字以上で入力してください。
     sessions:
       signed_in: 'ログインしました。'
       signed_out: 'ログアウトしました。'
-      already_signed_out: '既にログアウト済みです。'
+      already_signed_out: '既にログアウト済みです。' 
+      new: 
     shared:
       links:
         forgot_your_password?: パスワード忘れましたか？
-        login: ログイン
-        signup: サインアップ
-        sign_in_with: "%{provider}でログイン"
+        didn_t_receive_confirmation_instructions: アカウント確認メール受領しましたか?
+        didn_t_receive_unlock_instructions: アカウント凍結解除方法のメール受領しましたか?
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
       send_paranoid_instructions: 'アカウントが見つかった場合、アカウントの凍結解除方法を数分以内にメールでご連絡します。'
       unlocked: 'アカウントを凍結解除しました。'
+      new:
+        resend_unlock_instructions: アカウントの凍結解除方法再送
   errors:
     messages:
       already_confirmed: 'は既に登録済みです。ログインしてください。'

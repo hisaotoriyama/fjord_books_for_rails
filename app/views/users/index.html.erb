@@ -1,0 +1,37 @@
+<h1><%= t(".users") %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name :id %></th>
+      <th><%= User.human_attribute_name :name %></th>
+      <th><%= User.human_attribute_name :email %></th>
+      <th><%= t(".follow") %></th>
+      <th><%= t(".following") %></th>
+      <th><%= t(".follower") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <% if user == current_user %>
+           <td>-----</td>
+        <% else %>
+          <% if current_user.following?(user) %>
+            <td><%= link_to t("views.common.do_unfollow"), unfollow_path(user.id), method: :post %></td>
+          <% else %>
+            <td><%= link_to t("views.common.do_follow"), follow_path(user.id), method: :post %></td>
+          <% end %>
+        <% end %>
+        <td><%= link_to t("views.common.show_list"), following_user_path(user.id) %></td>
+        <td><%= link_to t("views.common.show_list"), follower_user_path(user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+<%= page_entries_info @users%>
