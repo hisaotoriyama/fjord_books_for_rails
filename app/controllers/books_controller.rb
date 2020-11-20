@@ -3,9 +3,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   BOOK_PER_PAGE_SIZE = 10
-  
+
   def index
-    @books = current_user.books.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
+    # @books = current_user.books.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
+    @books = Book.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
   end
 
   def show; end

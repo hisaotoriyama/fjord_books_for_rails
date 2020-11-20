@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       book: 本
       relationship: フォロー・フォロワー
+      report: レポート
     attributes:
       user:
         id: ID
@@ -16,13 +17,15 @@ ja:
         password: パスワード
         password_confirmation: パスワード再入力
         current_password: 現在のパスワード
-        remember_me: パスワード保存 
+        remember_me: パスワード保存
+        user_id: ユーザーID
       book:
         title: 書籍名
         memo: 補足
         author: 著者
         picture: 表紙イメージ
         all_books: 書籍一覧
+        user_id: ユーザーID
       relationship:
         following: フォロー
         follower: フォロワー
@@ -30,9 +33,20 @@ ja:
         follower_users_list: フォロワーリスト
         following_numbers: フォロー数
         follower_numbers: フォロワー数
+      report:
+        title: タイトル
+        body: 本文
+        user: ユーザー
+        user_id: ユーザーID
+      comment:
+        user_commenting: コメント者
+        body: コメント本文
+        created_at: コメント作成日時
+
   layouts:
     application:
       logged_in_as: ログインユーザー：
+      login_user_id: ログインユーザーID：
   books:
     index:
       books: 書籍一覧
@@ -55,6 +69,7 @@ ja:
       my_page: ログインユーザーページ
       other_user_page: 他ユーザーページ
       all_books_of_user: ユーザ選択書籍
+      all_reports_of_user: ユーザ自身のレポート
     index:
       users: ユーザー一覧
       follow: フォロー
@@ -66,6 +81,13 @@ ja:
     following:
       following_users_list: フォローリスト
       following_numbers: フォロー数
+  reports:
+    index:
+      reports: レポート一覧
+      are_you_sure?: 本当によろしいですか?
+  comments:
+    comments:
+      comment_list: コメント一覧
   views:
     common:
       show: 表示する
@@ -79,6 +101,7 @@ ja:
       signup: サインアップ
       show_list: リスト表示
       new_book: 新規書籍追加
+      new_report: 新規レポート追加
       update: アップデート
       sign_in_with: "%{provider}でログイン"
   errors:

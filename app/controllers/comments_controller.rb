@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   # GET /comments
   # GET /comments.json
@@ -9,8 +11,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /comments/new
   def new
@@ -18,20 +19,16 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
-  end
+  def edit; end
 
   def create
     resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
-    new_comment_params = comment_params.merge!(:user_id =>  current_user.id)
+    new_comment_params = comment_params.merge!(user_id: current_user.id)
     @comment = @commentable.comments.new(new_comment_params)
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to url_for(@commentable), notice: 'Comment was successfully CREATED.' }
-      else
-        p "Saveできません"
-      end
+      @comment.save
+      format.html { redirect_to url_for(@commentable), notice: 'Comment was successfully CREATED.' }
     end
   end
 
@@ -60,6 +57,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
     @comment = Comment.find(params[:id])
