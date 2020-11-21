@@ -64,6 +64,9 @@ ja:
       success: 書籍更新登録できました。
     destroy:
       success: 削除できました。
+    flash:
+      success: "書籍登録成功しました"
+      danger: "書籍登録失敗しました"
   users:
     show:
       user: ユーザー詳細
@@ -83,6 +86,12 @@ ja:
     following:
       following_users_list: フォローリスト
       following_numbers: フォロー数
+    create:
+      success: 書籍新規登録できました。
+    update:
+      success: 書籍更新登録できました。
+    destroy:
+      success: 削除できました。
   reports:
     index:
       reports: レポート一覧
@@ -90,9 +99,23 @@ ja:
       new_report: 新規レポート登録
     show:
       are_you_sure?: 本当によろしいですか?
+    edit:
+      editing_report: 本レポート編集
+    create:
+      success: 書籍新規登録できました。
+    update:
+      success: 書籍更新登録できました。
+    destroy:
+      success: 削除できました。
   comments:
     comments:
       comment_list: コメント一覧
+    create:
+      success: 書籍新規登録できました。
+    update:
+      success: 書籍更新登録できました。
+    destroy:
+      success: 削除できました。
   views:
     common:
       show: 表示する

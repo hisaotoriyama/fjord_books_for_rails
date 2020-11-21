@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(new_comment_params)
     respond_to do |format|
       @comment.save
-      format.html { redirect_to url_for(@commentable), notice: 'Comment was successfully CREATED.' }
+      format.html { redirect_to url_for(@commentable), notice: t('.success') }
     end
   end
 
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment, notice: t('.success') }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to comments_url, notice: t('.success')  }
       format.json { head :no_content }
     end
   end
