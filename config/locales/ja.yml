@@ -57,6 +57,7 @@ ja:
     edit:
       editing_book: 本内容編集
     show:
+      are_you_sure?: 本当によろしいですか?
     create:
       success: 書籍新規登録できました。
     update:
@@ -70,6 +71,7 @@ ja:
       other_user_page: 他ユーザーページ
       all_books_of_user: ユーザ選択書籍
       all_reports_of_user: ユーザ自身のレポート
+      are_you_sure?: 本当によろしいですか?
     index:
       users: ユーザー一覧
       follow: フォロー
@@ -84,6 +86,9 @@ ja:
   reports:
     index:
       reports: レポート一覧
+    new:
+      new_report: 新規レポート登録
+    show:
       are_you_sure?: 本当によろしいですか?
   comments:
     comments:
