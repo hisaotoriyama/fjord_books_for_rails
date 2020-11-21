@@ -9,13 +9,10 @@
       author: Faker::Book.author
     )
   end
-end
-
-users.each do |user|
-  5.times do |_n|
-    Report.create!(
-      title: Faker::Name.first_name,
-      body: Faker::Quote.famous_last_words,
+  5.times do
+    user.reports.create!(
+      title: Faker::Movie.title,
+      body: Faker::Movie.quote,
       user_id: user.id
     )
   end
