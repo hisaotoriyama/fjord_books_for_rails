@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: t('.success')}
+        format.html { redirect_to @report, notice: t('.success') }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('.success')}
+      format.html { redirect_to reports_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
