@@ -12,9 +12,9 @@
   <tbody>
         <th><% commentable.comments.each do |comment| %></th>
         <tr>
-        <th><%= comment.user_id %></th>
-        <th><%= comment.body %></th>
-        <th><%= comment.created_at%></th>
+          <th><%= comment.user_id %></th>
+          <th><%= comment.body %></th>
+          <th><%= comment.created_at%></th>
         </tr>
         <% end %>
   </tbody>

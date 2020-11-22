@@ -16,7 +16,7 @@
         <td><%= comment.commentable_id %></td>
         <td><%= link_to t("views.common.show"), comment %></td>
         <td><%= link_to t("views.common.edit"), edit_comment_path(comment) %></td>
-        <td><%= link_to t("views.common.destroy"), comment, method: :delete, data: { confirm: '.are_you_sure?' } %></td>
+        <td><%= link_to t("views.common.destroy"), comment, method: :delete, data: { confirm: t(".are_you_sure?") } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to t("views.common.new_book"), new_comment_path %>

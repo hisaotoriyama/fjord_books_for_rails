@@ -8,5 +8,5 @@
   <%= @comment.commentable_id %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to t("views.common.edit"), edit_comment_path(@comment) %> |
+<%= link_to t("views.common.back"), comments_path %>

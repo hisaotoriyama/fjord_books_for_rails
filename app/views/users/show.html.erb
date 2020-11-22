@@ -69,7 +69,9 @@
   </tbody>
 </table>
 
-<%= link_to t("views.common.new_book"), new_book_path %>
+<% if @user == current_user %>
+  <%= link_to t("views.common.new_book"), new_book_path %>
+<% end %>
 <%= paginate @user_books %>
 <%= page_entries_info @user_books %>
 
@@ -102,6 +104,8 @@
   </tbody>
 </table>
 
-<%= link_to t("views.common.new_report"), new_report_path %>
+<% if @user == current_user %>
+  <%= link_to t("views.common.new_report"), new_report_path %>
+<% end %>
 <%= paginate @user_reports %>
 <%= page_entries_info @user_reports %>
