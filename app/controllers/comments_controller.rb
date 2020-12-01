@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('.success')
     else
-      render :edit
+      render :edit, notice: t('.failure')
     end
   end
 
