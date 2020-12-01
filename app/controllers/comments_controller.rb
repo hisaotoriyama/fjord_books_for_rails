@@ -8,8 +8,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     new_comment_params = comment_params.merge!(user_id: current_user.id)
@@ -25,7 +24,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params) && current_user.id == @comment.user_id
       redirect_to @commentable, notice: t('.success')
     else
-      render :edit, notice: t(".failure")
+      render :edit, notice: t('.failure')
     end
   end
 
@@ -33,7 +32,7 @@ class CommentsController < ApplicationController
     if @comment.destroy && current_user.id == @comment.user_id
       redirect_to @commentable, notice: t('.success')
     else
-      render :@commentable, notice: t(".failure")
+      render :@commentable, notice: t('.failure')
     end
   end
 

@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to @book, notice: t('.success')
     else
-      render :edit,  notice: t('.failure')
+      render :edit, notice: t('.failure')
     end
   end
 
