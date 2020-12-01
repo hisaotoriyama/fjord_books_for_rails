@@ -97,7 +97,7 @@ ja:
     show:
       are_you_sure?: 本当によろしいですか?
     edit:
-      editing_report: 本レポート編集
+      editing_report: レポート編集
     create:
       success: レポート新規登録できました。
     update:
@@ -107,12 +107,17 @@ ja:
   comments:
     comments:
       comment_list: コメント一覧
+      are_you_sure?: 本当によろしいですか?
+    edit:
+      editing_comment: コメント編集
     create:
       success: コメント新規登録できました。
     update:
       success: コメント更新登録できました。
+      failure: コメント更新登録できませんでした。
     destroy:
       success: コメント削除できました。
+      failure: コメント削除できませんでした。
   views:
     common:
       show: 表示する
@@ -328,6 +333,8 @@ ja:
     two_words_connector: "、"
     words_connector: "、"
   time:
+    formats:
+      default: "%y/%m/%d %H:%M"
   am: 午前
   formats:
     default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"

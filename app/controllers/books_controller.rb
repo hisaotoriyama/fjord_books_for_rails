@@ -5,7 +5,6 @@ class BooksController < ApplicationController
   BOOK_PER_PAGE_SIZE = 10
 
   def index
-    # @books = current_user.books.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
     @books = Book.order(:created_at, :id).page(params[:page]).per(BOOK_PER_PAGE_SIZE)
   end
 
@@ -19,35 +18,24 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: t('.success') }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.save
+      redirect_to @book, notice: t('.success')
+    else
+      render :new, notice: t('.failure')
     end
   end
 
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: t('.success') }
-        format.json { render :show, status: :ok, location: @book }
-      else
-        format.html { render :edit }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.update(book_params)
+      redirect_to @book, notice: t('.success')
+    else
+      render :edit,  notice: t('.failure')
     end
   end
 
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: t('.success') }
-      format.json { head :no_content }
-    end
+    redirect_to books_url, notice: t('.success')
   end
 
   private

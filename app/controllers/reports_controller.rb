@@ -18,36 +18,24 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
-
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to @report, notice: t('.success') }
-        format.json { render :show, status: :created, location: @report }
-      else
-        format.html { render :new }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if @report.save
+      redirect_to @report, notice: t('.success')
+    else
+      render :new, notice: t('.failure')
     end
   end
 
   def update
-    respond_to do |format|
-      if @report.update(report_params)
-        format.html { redirect_to @report, notice: t('.success') }
-        format.json { render :show, status: :ok, location: @report }
-      else
-        format.html { render :edit }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if @report.update(report_params)
+      redirect_to @report, notice: t('.success')
+    else
+      render :edit, notice: t('.failure')
     end
   end
 
   def destroy
     @report.destroy
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('.success') }
-      format.json { head :no_content }
-    end
+    redirect_to reports_url, notice: t('.success')
   end
 
   private

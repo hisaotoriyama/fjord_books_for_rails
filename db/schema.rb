@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_061816) do
+ActiveRecord::Schema.define(version: 2020_11_30_234500) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_11_15_061816) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "", null: false
     t.text "memo"
-    t.string "author"
+    t.string "author", default: "", null: false
     t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_061816) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
+    t.text "body", default: "", null: false
     t.string "commentable_type", null: false
     t.integer "commentable_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2020_11_15_061816) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.integer "user_id"
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
+    t.integer "user_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
