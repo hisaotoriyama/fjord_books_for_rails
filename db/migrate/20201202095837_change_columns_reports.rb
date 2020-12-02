@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnsReports < ActiveRecord::Migration[6.0]
   def up
     change_column :reports, :user_id, :integer, default: 0, null: false
