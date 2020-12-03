@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params) && current_user.id == @comment.user_id
+    if @comment.update(comment_params)
       redirect_to @commentable, notice: t('.success')
     else
       render :edit, notice: t('.failure')
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy && current_user.id == @comment.user_id
+    if @comment.destroy
       redirect_to @commentable, notice: t('.success')
     else
       render :@commentable, notice: t('.failure')
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
   end
 
   def set_commentable
