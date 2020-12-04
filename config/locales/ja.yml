@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       book: 本
       relationship: フォロー・フォロワー
+      report: レポート
     attributes:
       user:
         id: ID
@@ -16,13 +17,15 @@ ja:
         password: パスワード
         password_confirmation: パスワード再入力
         current_password: 現在のパスワード
-        remember_me: パスワード保存 
+        remember_me: パスワード保存
+        user_id: ユーザーID
       book:
         title: 書籍名
         memo: 補足
         author: 著者
         picture: 表紙イメージ
         all_books: 書籍一覧
+        user_id: ユーザーID
       relationship:
         following: フォロー
         follower: フォロワー
@@ -30,9 +33,20 @@ ja:
         follower_users_list: フォロワーリスト
         following_numbers: フォロー数
         follower_numbers: フォロワー数
+      report:
+        title: タイトル
+        body: 本文
+        user: ユーザー
+        user_id: ユーザーID
+      comment:
+        user_commenting: コメント者
+        body: コメント本文
+        created_at: コメント作成日時
+
   layouts:
     application:
       logged_in_as: ログインユーザー：
+      login_user_id: ログインユーザーID：
   books:
     index:
       books: 書籍一覧
@@ -43,6 +57,7 @@ ja:
     edit:
       editing_book: 本内容編集
     show:
+      are_you_sure?: 本当によろしいですか?
     create:
       success: 書籍新規登録できました。
     update:
@@ -55,6 +70,8 @@ ja:
       my_page: ログインユーザーページ
       other_user_page: 他ユーザーページ
       all_books_of_user: ユーザ選択書籍
+      all_reports_of_user: ユーザ自身のレポート
+      are_you_sure?: 本当によろしいですか?
     index:
       users: ユーザー一覧
       follow: フォロー
@@ -66,6 +83,41 @@ ja:
     following:
       following_users_list: フォローリスト
       following_numbers: フォロー数
+    create:
+      success: ユーザー新規登録できました。
+    update:
+      success: ユーザー更新登録できました。
+    destroy:
+      success: ユーザー削除できました。
+  reports:
+    index:
+      reports: レポート一覧
+    new:
+      new_report: 新規レポート登録
+    show:
+      are_you_sure?: 本当によろしいですか?
+    edit:
+      editing_report: レポート編集
+    create:
+      success: レポート新規登録できました。
+    update:
+      success: レポート更新登録できました。
+    destroy:
+      success: レポート削除できました。
+  comments:
+    comments:
+      comment_list: コメント一覧
+      are_you_sure?: 本当によろしいですか?
+    edit:
+      editing_comment: コメント編集
+    create:
+      success: コメント新規登録できました。
+    update:
+      success: コメント更新登録できました。
+      failure: コメント更新登録できませんでした。
+    destroy:
+      success: コメント削除できました。
+      failure: コメント削除できませんでした。
   views:
     common:
       show: 表示する
@@ -79,6 +131,8 @@ ja:
       signup: サインアップ
       show_list: リスト表示
       new_book: 新規書籍追加
+      new_report: 新規レポート追加
+      new_comment: 新規コメント追加
       update: アップデート
       sign_in_with: "%{provider}でログイン"
   errors:
@@ -279,6 +333,8 @@ ja:
     two_words_connector: "、"
     words_connector: "、"
   time:
+    formats:
+      default: "%y/%m/%d %H:%M"
   am: 午前
   formats:
     default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"

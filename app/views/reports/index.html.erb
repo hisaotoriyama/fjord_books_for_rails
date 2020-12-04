@@ -1,0 +1,30 @@
+<h1><%= t(".reports") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Report.human_attribute_name :title %></th>
+      <th><%= Report.human_attribute_name :body %></th>
+      <th><%= Report.human_attribute_name :user_id %></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.title %></td>
+        <td><%= report.body %></td>
+        <td><%= report.user_id %></td>
+        <td><%= link_to t("views.common.show"), report %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t("views.common.new_report"), new_report_path %>
+
+<%= paginate @reports %>
+<%= page_entries_info @reports %>
