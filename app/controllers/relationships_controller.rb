@@ -5,12 +5,11 @@ class RelationshipsController < ApplicationController
     other = User.find(params[:id])
     current_user.follow(other)
     redirect_to user_path(other)
-  end 
+  end
 
   def unfollow
     other = User.find(params[:id])
     current_user.unfollow(other)
     redirect_to user_path(other)
   end
-
 end

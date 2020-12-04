@@ -1,5 +1,5 @@
 <p>
-  <strong><%= Book.human_attribute_name :title  %>:</strong>
+  <strong><%= Book.human_attribute_name :title %>:</strong>
   <%= @book.title %>
 </p>
 
@@ -18,5 +18,9 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= link_to t("views.common.edit"), edit_book_path(@book) %> |
+<% if @book.user_id == current_user.id %>
+  <%= link_to t("views.common.edit"), edit_book_path(@book) %> |
+<% end %>
 <%= link_to t("views.common.back"), books_path %>
+
+<%= render partial: 'comments/comments', locals: { commentable: @book } %>
