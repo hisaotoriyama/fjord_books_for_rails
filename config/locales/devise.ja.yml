@@ -53,6 +53,7 @@ ja:
         leave_blank_if_you_don't_want_to_change_it: 変更しない場合ブランクにしてください
         characters_minimum: 文字以上で入力してください。
         we_need_your_current_password_to_confirm_your_changes: 現在のパスワードを入力してください
+        delete_my_account: アカウント削除
         cancel_my_account: アカウントをキャンセル
         final_confirm: 本当によろしいですか?
       new:
