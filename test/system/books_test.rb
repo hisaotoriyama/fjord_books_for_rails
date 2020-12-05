@@ -1,64 +1,68 @@
 # frozen_string_literal: true
 
 require 'application_system_test_case'
+require 'webdrivers'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
     @book = books(:book_1)
     @user = users(:user_1)
-    # login_as(@user)
-    # visit root_url
-    # login_as @user
-    # fill_in 'メールアドレス', with: 'sample-1@example.com'
-  #   fill_in 'パスワード', with: 'password'
-  #   click_button 'ログイン'
+    visit root_path
+    fill_in 'メールアドレス', with: "sample-1@example.com"
+    fill_in 'パスワード', with: 111111
+    click_button 'ログイン'
   end
 
-   test "the truth1" do
-    p @book
-    p @user
-    assert true
+  test 'visiting the Book/index' do
+    visit books_path
+    assert_selector 'h1', text: '書籍一覧'
+    assert_text '書籍名'
+    assert_text '補足'
+    assert_text '著者'
+    assert_text '表紙イメージ'
+    assert_text 'ユーザーID'
+    assert_text 'ログインユーザー'
+    assert_text 'ログインユーザーID'
   end
 
-  # test 'visiting the index' do
-  #   visit books_url
-  #   assert_selector 'h1', text: 'Books'
-  # end
+  test 'creating a Book' do
+    visit books_path
+    click_on '新規書籍追加'
+    fill_in '書籍名', with: @book.title
+    fill_in '補足', with: @book.memo
+    fill_in '著者', with: @book.author
+    click_button 'Create 本'
+    assert_text '書籍新規登録できました。'
+  end
 
-  # test 'creating a Book' do
-  #   visit books_url
-  #   click_on 'New Book'
+  test 'updating a Book' do
+    visit user_path(@user)
+    click_on '本編集'
+    fill_in '書籍名', with: "The Good Earth"
+    fill_in '補足', with: "大地"
+    fill_in '著者', with: "Pearl Sydenstricker Buck"
+    click_on 'Update 本'
+    assert_text '書籍更新登録できました。'
+  end
 
-  #   fill_in 'Author', with: @book.author
-  #   fill_in 'Memo', with: @book.memo
-  #   fill_in 'Picture', with: @book.picture
-  #   fill_in 'Title', with: @book.title
-  #   click_on 'Create Book'
+  test 'showing a Book' do
+    visit user_path(@user)
+    click_on '本表示'
+    assert_text '書籍名'
+    assert_text @book.title
+    assert_text '補足'
+    assert_text @book.memo    
+    assert_text '著者'
+    assert_text @book.author
+    assert_text '表紙イメージ'
+    assert_text @book.picture
+  end
 
-  #   assert_text 'Book was successfully created'
-  #   click_on 'Back'
-  # end
-
-  # test 'updating a Book' do
-  #   visit books_url
-  #   click_on 'Edit', match: :first
-
-  #   fill_in 'Author', with: @book.author
-  #   fill_in 'Memo', with: @book.memo
-  #   fill_in 'Picture', with: @book.picture
-  #   fill_in 'Title', with: @book.title
-  #   click_on 'Update Book'
-
-  #   assert_text 'Book was successfully updated'
-  #   click_on 'Back'
-  # end
-
-  # test 'destroying a Book' do
-  #   visit books_url
-  #   page.accept_confirm do
-  #     click_on 'Destroy', match: :first
-  #   end
-
-  #   assert_text 'Book was successfully destroyed'
-  # end
+  test 'destroying a Book' do
+    visit user_path(@user)
+    page.accept_confirm do
+      click_on '本削除'
+    end
+    assert_text '削除できました。'
+  end
 end

@@ -1,49 +1,60 @@
-# # frozen_string_literal: true
+# frozen_string_literal: true
 
-# require 'application_system_test_case'
+require 'application_system_test_case'
+require 'webdrivers'
 
-# class ReportsTest < ApplicationSystemTestCase
-#   setup do
-#     @report = reports(:one)
-#   end
+class ReportsTest < ApplicationSystemTestCase
+  setup do
+    @report = reports(:report_1)
+    @user = users(:user_1)
+    visit root_path
+    fill_in 'メールアドレス', with: "sample-1@example.com"
+    fill_in 'パスワード', with: 111111
+    click_button 'ログイン'
+  end
 
-#   test 'visiting the index' do
-#     visit reports_url
-#     assert_selector 'h1', text: 'Reports'
-#   end
+  test 'visiting the Report/index' do
+    visit reports_path
+    assert_selector 'h1', text: 'レポート一覧'
+    assert_text 'タイトル'
+    assert_text '本文'
+    assert_text 'ユーザーID'
+    assert_text 'ログインユーザー'
+    assert_text 'ログインユーザーID'
+  end
 
-#   test 'creating a Report' do
-#     visit reports_url
-#     click_on 'New Report'
+  test 'creating a Report' do
+    visit reports_path
+    click_on '新規レポート追加'
+    fill_in 'タイトル', with: @report.title
+    fill_in '本文', with: @report.body
+    click_button 'Create レポート'
+    assert_text 'レポート新規登録できました。'
+  end
 
-#     fill_in 'Body', with: @report.body
-#     fill_in 'Title', with: @report.title
-#     fill_in 'User', with: @report.user_id
-#     click_on 'Create Report'
+  test 'updating a Report' do
+    visit user_path(@user)
+    click_on 'レポート編集'
+    fill_in 'タイトル', with: "明日の天気"
+    fill_in '本文', with: "行楽日和"
+    click_on 'Update レポート'
+    assert_text 'レポート更新登録できました。'
+  end
 
-#     assert_text 'Report was successfully created'
-#     click_on 'Back'
-#   end
+  test 'showing a Report' do
+    visit user_path(@user)
+    click_on 'レポート表示'
+    assert_text 'タイトル'
+    assert_text @report.title
+    assert_text '本文'
+    assert_text @report.body   
+  end
 
-#   test 'updating a Report' do
-#     visit reports_url
-#     click_on 'Edit', match: :first
-
-#     fill_in 'Body', with: @report.body
-#     fill_in 'Title', with: @report.title
-#     fill_in 'User', with: @report.user_id
-#     click_on 'Update Report'
-
-#     assert_text 'Report was successfully updated'
-#     click_on 'Back'
-#   end
-
-#   test 'destroying a Report' do
-#     visit reports_url
-#     page.accept_confirm do
-#       click_on 'Destroy', match: :first
-#     end
-
-#     assert_text 'Report was successfully destroyed'
-#   end
-# end
+  test 'destroying a Report' do
+    visit user_path(@user)
+    page.accept_confirm do
+      click_on 'レポート削除'
+    end
+    assert_text '削除できました。'
+  end
+end

@@ -120,9 +120,17 @@ ja:
       failure: コメント削除できませんでした。
   views:
     common:
-      show: 表示する
-      edit: 編集する
-      destroy: 削除する
+      show: 表示
+      edit: 編集
+      destroy: 削除
+      book:
+        show: 本表示
+        edit: 本編集
+        destroy: 本削除
+      report:
+        show: レポート表示
+        edit: レポート編集
+        destroy: レポート削除
       back: 戻る
       do_follow: フォローする
       do_unfollow: フォロー外す

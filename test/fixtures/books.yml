@@ -3,4 +3,12 @@ book_1:
   title: Gone with the wind
   memo: Histric Great Movie
   author: Margaret Munnerlyn Mitchell
-  user_id: 1
+  user_id: 590306657
+
+  # book_2:
+  #   id: 2
+  #   title: The Good Earth
+  #   memo: 大地
+  #   author: Pearl Sydenstricker Buck
+  #   user_id: 1
+  
