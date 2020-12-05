@@ -12,16 +12,27 @@ class UserTest < ApplicationSystemTestCase
     click_button 'ログイン'
   end
 
+  test 'visiting the User/index' do
+    visit users_path
+    assert_selector 'h1', text: 'ユーザー一覧'
+    assert_text 'ID'
+    assert_text '名前'
+    assert_text 'メールアドレス'
+    assert_text 'フォロー'
+    assert_text 'フォロー先'
+    assert_text 'フォロワー先'
+  end
+
   test 'creating a User' do
     click_link 'ログアウト'
     visit new_user_registration_path
     fill_in '名前', with: "Hanako Sato"
-    fill_in '郵便番号', with: 2222222
+    fill_in '郵便番号', with: 5555555
     fill_in '住所', with: "Saitama"
     fill_in 'プロフィール', with: "HS profile"
-    fill_in 'メールアドレス', with: "sample-2@example.com"
-    fill_in 'パスワード', with: "222222"
-    fill_in 'パスワード再入力', with: "222222"
+    fill_in 'メールアドレス', with: "sample-5@example.com"
+    fill_in 'パスワード', with: "555555"
+    fill_in 'パスワード再入力', with: "555555"
     click_button 'サインアップ'
 
     click_link 'ユーザー詳細'
@@ -30,9 +41,9 @@ class UserTest < ApplicationSystemTestCase
     assert_text "Hanako Sato"
 
     assert_text 'メールアドレス'
-    assert_text 'sample-2@example.com'  
+    assert_text 'sample-5@example.com'  
     assert_text '郵便番号'
-    assert_text 2222222
+    assert_text 5555555
     assert_text '住所'
     assert_text "Saitama"
     assert_text 'プロフィール'
@@ -47,21 +58,21 @@ class UserTest < ApplicationSystemTestCase
     click_link 'ユーザー詳細'
     click_link '編集'
     fill_in '名前', with: "Rev Hanako Sato"
-    fill_in '郵便番号', with: 2222222
+    fill_in '郵便番号', with: 5555555
     fill_in '住所', with: "Rev Saitama"
     fill_in 'プロフィール', with: "Rev HS profile"
-    fill_in 'メールアドレス', with: "rev_sample-2@example.com"
-    fill_in 'パスワード', with: "rev222222"
-    fill_in 'パスワード再入力', with: "rev222222"
-    fill_in '現在のパスワード', with: "222222"
+    fill_in 'メールアドレス', with: "rev_sample-5@example.com"
+    fill_in 'パスワード', with: "rev555555"
+    fill_in 'パスワード再入力', with: "rev555555"
+    fill_in '現在のパスワード', with: "555555"
     click_button 'アップデート'
     assert_selector 'h1', text: 'ログインユーザーページ'
     assert_text '名前'
     assert_text "Rev Hanako Sato"
     assert_text 'メールアドレス'
-    assert_text 'rev_sample-2@example.com'  
+    assert_text 'rev_sample-5@example.com'  
     assert_text '郵便番号'
-    assert_text 2222222
+    assert_text 5555555
     assert_text '住所'
     assert_text "Rev Saitama"
     assert_text 'プロフィール'
