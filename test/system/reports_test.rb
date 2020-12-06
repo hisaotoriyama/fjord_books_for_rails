@@ -5,11 +5,11 @@ require 'webdrivers'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:report_1)
-    @user = users(:user_1)
+    @report = reports(:report1)
+    @user = users(:user1)
     visit root_path
-    fill_in 'メールアドレス', with: "sample-1@example.com"
-    fill_in 'パスワード', with: 111111
+    fill_in 'メールアドレス', with: 'sample-1@example.com'
+    fill_in 'パスワード', with: 1_111_111
     click_button 'ログイン'
   end
 
@@ -35,8 +35,8 @@ class ReportsTest < ApplicationSystemTestCase
   test 'updating a Report' do
     visit user_path(@user)
     click_on 'レポート編集'
-    fill_in 'タイトル', with: "明日の天気"
-    fill_in '本文', with: "行楽日和"
+    fill_in 'タイトル', with: '明日の天気'
+    fill_in '本文', with: '行楽日和'
     click_on 'Update レポート'
     assert_text 'レポート更新登録できました。'
   end
@@ -47,7 +47,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'タイトル'
     assert_text @report.title
     assert_text '本文'
-    assert_text @report.body   
+    assert_text @report.body
   end
 
   test 'destroying a Report' do

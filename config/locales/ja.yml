@@ -5,6 +5,7 @@ ja:
       book: 本
       relationship: フォロー・フォロワー
       report: レポート
+      comment: コメント
     attributes:
       user:
         id: ID
@@ -42,7 +43,6 @@ ja:
         user_commenting: コメント者
         body: コメント本文
         created_at: コメント作成日時
-
   layouts:
     application:
       logged_in_as: ログインユーザー：
@@ -131,6 +131,10 @@ ja:
         show: レポート表示
         edit: レポート編集
         destroy: レポート削除
+      comment:
+        show: コメント表示
+        edit: コメント編集
+        destroy: コメント削除       
       back: 戻る
       do_follow: フォローする
       do_unfollow: フォロー外す
