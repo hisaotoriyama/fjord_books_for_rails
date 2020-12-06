@@ -34,12 +34,10 @@ class UserTest < ApplicationSystemTestCase
     fill_in 'パスワード', with: '555555'
     fill_in 'パスワード再入力', with: '555555'
     click_button 'サインアップ'
-
     click_link 'ユーザー詳細'
     assert_selector 'h1', text: 'ログインユーザーページ'
     assert_text '名前'
     assert_text 'Hanako Sato'
-
     assert_text 'メールアドレス'
     assert_text 'sample-5@example.com'
     assert_text '郵便番号'
