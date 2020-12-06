@@ -9,7 +9,7 @@ class ReportsTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 1_111_111
+    fill_in 'パスワード', with: 111_111
     click_button 'ログイン'
   end
 
@@ -26,8 +26,8 @@ class ReportsTest < ApplicationSystemTestCase
   test 'creating a Report' do
     visit reports_path
     click_on '新規レポート追加'
-    fill_in 'タイトル', with: @report.title
-    fill_in '本文', with: @report.body
+    fill_in 'タイトル', with: '昨日の天気'
+    fill_in '本文', with: '雨'
     click_button 'Create レポート'
     assert_text 'レポート新規登録できました。'
   end

@@ -6,7 +6,7 @@ user1:
   address: Tokyo
   profile: TY profile
   provider: github
-  uid: 590306657
+  uid: 206669143
 
 user2:
   name: Jiro Kawakami
@@ -16,7 +16,7 @@ user2:
   address: Chiba
   profile: TY profile
   provider: github
-  uid: 975572189
+  uid: 358143215
 
 user3:
   name: Saburo Taniguchi
@@ -26,4 +26,4 @@ user3:
   address: Kanagawa
   profile: TY profile
   provider: github
-  uid: 220281934
+  uid: 576709754
