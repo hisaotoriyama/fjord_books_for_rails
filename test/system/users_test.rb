@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'application_system_test_case'
-require 'webdrivers'
+# require 'webdrivers'
 
 class UserTest < ApplicationSystemTestCase
   setup do
@@ -23,7 +23,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'フォロワー先'
   end
 
-  test 'creating a User' do
+  test 'creating a User' do # rubocop:disable Metrics/BlockLength
     click_link 'ログアウト'
     visit new_user_registration_path
     fill_in '名前', with: 'Hanako Sato'
@@ -52,7 +52,7 @@ class UserTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'ユーザ自身のレポート'
   end
 
-  test 'editing a User' do
+  test 'editing a User' do # rubocop:disable Metrics/BlockLength
     click_link 'ユーザー詳細'
     click_link '編集'
     fill_in '名前', with: 'Rev Hanako Sato'
