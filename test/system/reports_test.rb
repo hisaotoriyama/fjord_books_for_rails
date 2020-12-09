@@ -9,11 +9,11 @@ class ReportsTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111_111
+    fill_in 'パスワード', with: 111111 # rubocop:disable Style/NumericLiterals
     click_button 'ログイン'
   end
 
-  test 'visiting the Report/index' do
+  test 'レポート一覧画面展開' do
     visit reports_path
     assert_selector 'h1', text: 'レポート一覧'
     assert_text 'タイトル'
@@ -23,7 +23,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'ログインユーザーID'
   end
 
-  test 'creating a Report' do
+  test '新規レポート追加' do
     visit reports_path
     click_on '新規レポート追加'
     fill_in 'タイトル', with: '昨日の天気'
@@ -32,7 +32,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'レポート新規登録できました。'
   end
 
-  test 'updating a Report' do
+  test 'レポート更新登録' do
     visit user_path(@user)
     click_on 'レポート編集'
     fill_in 'タイトル', with: '明日の天気'
@@ -41,7 +41,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'レポート更新登録できました。'
   end
 
-  test 'showing a Report' do
+  test '個別レポート表示' do
     visit user_path(@user)
     click_on 'レポート表示'
     assert_text 'タイトル'
@@ -50,7 +50,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text @report.body
   end
 
-  test 'destroying a Report' do
+  test 'レポート登録削除' do
     visit user_path(@user)
     page.accept_confirm do
       click_on 'レポート削除'

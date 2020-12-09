@@ -9,11 +9,11 @@ class BooksTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111_111
+    fill_in 'パスワード', with: 111111 # rubocop:disable Style/NumericLiterals
     click_button 'ログイン'
   end
 
-  test 'visiting the Book/index' do
+  test '書籍一覧画面展開' do
     visit books_path
     assert_selector 'h1', text: '書籍一覧'
     assert_text '書籍名'
@@ -25,17 +25,17 @@ class BooksTest < ApplicationSystemTestCase
     assert_text 'ログインユーザーID'
   end
 
-  test 'creating a Book' do
+  test '新規書籍追加' do
     visit books_path
     click_on '新規書籍追加'
-    fill_in '書籍名', with: @book.title
-    fill_in '補足', with: @book.memo
-    fill_in '著者', with: @book.author
+    fill_in '書籍名', with: 'Gone with the wind'
+    fill_in '補足', with: 'Histric Great Movie'
+    fill_in '著者', with: 'Margaret Munnerlyn Mitchell'
     click_button 'Create 本'
     assert_text '書籍新規登録できました。'
   end
 
-  test 'updating a Book' do
+  test '書籍更新登録' do
     visit user_path(@user)
     click_on '本編集'
     fill_in '書籍名', with: 'The Good Earth'
@@ -45,20 +45,20 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '書籍更新登録できました。'
   end
 
-  test 'showing a Book' do
+  test '個別書籍表示' do
     visit user_path(@user)
     click_on '本表示'
     assert_text '書籍名'
-    assert_text @book.title
+    assert_text 'Gone with the wind'
     assert_text '補足'
-    assert_text @book.memo
+    assert_text 'Histric Great Movie'
     assert_text '著者'
-    assert_text @book.author
+    assert_text 'Margaret Munnerlyn Mitchell'
     assert_text '表紙イメージ'
-    assert_text @book.picture
+    assert_text 'Margaret Munnerlyn Mitchell'
   end
 
-  test 'destroying a Book' do
+  test '書籍登録削除' do
     visit user_path(@user)
     page.accept_confirm do
       click_on '本削除'

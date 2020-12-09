@@ -10,7 +10,7 @@ class RelationshipTest < ApplicationSystemTestCase
     @user3 = users(:user3)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111_111
+    fill_in 'パスワード', with: 111111 # rubocop:disable Style/NumericLiterals
     click_button 'ログイン'
   end
 

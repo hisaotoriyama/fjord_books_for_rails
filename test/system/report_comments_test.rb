@@ -9,7 +9,7 @@ class ReportCommentsTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111_111
+    fill_in 'パスワード', with: 111111 # rubocop:disable Style/NumericLiterals
     click_button 'ログイン'
 
     visit report_path(@report)
