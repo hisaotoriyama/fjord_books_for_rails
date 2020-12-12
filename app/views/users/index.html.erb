@@ -20,11 +20,13 @@
         <% if user == current_user %>
            <td>-----</td>
         <% else %>
-          <% if current_user.following?(user) %>
-            <td><%= link_to t("views.common.do_unfollow"), unfollow_path(user.id), method: :post %></td>
-          <% else %>
-            <td><%= link_to t("views.common.do_follow"), follow_path(user.id), method: :post %></td>
-          <% end %>
+          <div data-testid="user.id" > 
+            <% if current_user.following?(user) %>
+              <td ><%= link_to t("views.common.do_unfollow"), unfollow_path(user.id), method: :post %></td>
+            <% else %>
+              <td><%= link_to t("views.common.do_follow"), follow_path(user.id), method: :post %></td>
+            <% end %>
+          </div>
         <% end %>
         <td><%= link_to t("views.common.show_list"), following_user_path(user.id) %></td>
         <td><%= link_to t("views.common.show_list"), follower_user_path(user.id) %></td>

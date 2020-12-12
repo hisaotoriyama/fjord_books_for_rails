@@ -14,7 +14,7 @@ class RelationshipTest < ApplicationSystemTestCase
     click_button 'ログイン'
   end
 
-  test 'follow and unfollow another user3' do
+  test '自分以外をfollowとunfollowする' do
     visit user_path(@user3)
     assert_selector 'h1', text: '他ユーザーページ'
     assert_difference '@user3.followers.count', 1 do
@@ -23,8 +23,7 @@ class RelationshipTest < ApplicationSystemTestCase
 
     visit user_path(@user1)
     assert_selector 'h1', text: 'ログインユーザーページ'
-    assert_text @user3.name
-
+    assert_text 'Saburo Taniguchi'
     visit user_path(@user3)
     assert_selector 'h1', text: '他ユーザーページ'
     assert_difference '@user3.followers.count', -1 do
@@ -32,12 +31,17 @@ class RelationshipTest < ApplicationSystemTestCase
     end
   end
 
-  test 'all the users for follow' do
+  test 'ユーザー一覧の画面からfollowする' do
     click_link 'ユーザー一覧'
     assert_selector 'h1', text: 'ユーザー一覧'
-    assert_text @user2.name
+    assert_text 'Jiro Kawakami'
+    within 'div[data-testid=@user2.id]' do
+      assert_text 'フォローする'
+    end
     assert_text 'フォローする'
-    assert_text @user3.name
-    assert_text 'フォローする'
+    assert_text 'Saburo Taniguchi'
+    within 'div[data-testid=@user3.id]' do
+      assert_text 'フォローする'
+    end
   end
 end

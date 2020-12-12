@@ -31,8 +31,23 @@ class BooksTest < ApplicationSystemTestCase
     fill_in '書籍名', with: 'Gone with the wind'
     fill_in '補足', with: 'Histric Great Movie'
     fill_in '著者', with: 'Margaret Munnerlyn Mitchell'
-    click_button 'Create 本'
+    click_button '登録する'
     assert_text '書籍新規登録できました。'
+    assert_text '書籍名'
+    assert_text 'Gone with the wind'
+    assert_text '補足'
+    assert_text 'Histric Great Movie'
+    assert_text '著者'
+    assert_text 'Margaret Munnerlyn Mitchell'
+    assert_text '表紙イメージ'
+    assert_text 'Margaret Munnerlyn Mitchell'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
   end
 
   test '書籍更新登録' do
@@ -41,8 +56,21 @@ class BooksTest < ApplicationSystemTestCase
     fill_in '書籍名', with: 'The Good Earth'
     fill_in '補足', with: '大地'
     fill_in '著者', with: 'Pearl Sydenstricker Buck'
-    click_on 'Update 本'
+    click_on '更新する'
     assert_text '書籍更新登録できました。'
+    assert_text '書籍名'
+    assert_text 'The Good Earth'
+    assert_text '補足'
+    assert_text '大地'
+    assert_text '著者'
+    assert_text 'Pearl Sydenstricker Buck'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
   end
 
   test '個別書籍表示' do
@@ -64,5 +92,11 @@ class BooksTest < ApplicationSystemTestCase
       click_on '本削除'
     end
     assert_text '削除できました。'
+    assert_selector 'h1', text: '書籍一覧'
+    assert_text '書籍名'
+    assert_text '補足'
+    assert_text '著者'
+    assert_text '表紙イメージ'
+    assert_text 'ユーザーID'
   end
 end

@@ -28,8 +28,19 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '新規レポート追加'
     fill_in 'タイトル', with: '昨日の天気'
     fill_in '本文', with: '雨'
-    click_button 'Create レポート'
+    click_button '登録する'
     assert_text 'レポート新規登録できました。'
+    assert_text 'タイトル'
+    assert_text '昨日の天気'
+    assert_text '本文'
+    assert_text '雨'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
   end
 
   test 'レポート更新登録' do
@@ -37,17 +48,28 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'レポート編集'
     fill_in 'タイトル', with: '明日の天気'
     fill_in '本文', with: '行楽日和'
-    click_on 'Update レポート'
+    click_on '更新する'
     assert_text 'レポート更新登録できました。'
+    assert_text 'タイトル'
+    assert_text '明日の天気'
+    assert_text '本文'
+    assert_text '行楽日和'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
   end
 
   test '個別レポート表示' do
     visit user_path(@user)
     click_on 'レポート表示'
     assert_text 'タイトル'
-    assert_text @report.title
+    assert_text '本日の天気'
     assert_text '本文'
-    assert_text @report.body
+    assert_text '晴天なり'
   end
 
   test 'レポート登録削除' do
@@ -56,5 +78,9 @@ class ReportsTest < ApplicationSystemTestCase
       click_on 'レポート削除'
     end
     assert_text '削除できました。'
+    assert_selector 'h1', text: 'レポート一覧'
+    assert_text 'タイトル'
+    assert_text '本文'
+    assert_text 'ユーザーID'
   end
 end

@@ -25,6 +25,7 @@ ja:
         memo: 補足
         author: 著者
         picture: 表紙イメージ
+        submit: 登録
         all_books: 書籍一覧
         user_id: ユーザーID
       relationship:
@@ -285,6 +286,10 @@ ja:
     one: "%{model}にエラーが発生しました"
     other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
   select:
     prompt: 選択してください
   submit:

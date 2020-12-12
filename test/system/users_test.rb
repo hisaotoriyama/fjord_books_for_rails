@@ -12,7 +12,7 @@ class UserTest < ApplicationSystemTestCase
     click_button 'ログイン'
   end
 
-  test 'visiting the User/index' do
+  test 'ユーザー一覧画面展開' do
     visit users_path
     assert_selector 'h1', text: 'ユーザー一覧'
     assert_text 'ID'
@@ -23,7 +23,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'フォロワー先'
   end
 
-  test 'creating a User' do # rubocop:disable Metrics/BlockLength
+  test '新規ユーザー追加' do # rubocop:disable Metrics/BlockLength
     click_link 'ログアウト'
     visit new_user_registration_path
     fill_in '名前', with: 'Hanako Sato'
@@ -34,6 +34,7 @@ class UserTest < ApplicationSystemTestCase
     fill_in 'パスワード', with: '555555'
     fill_in 'パスワード再入力', with: '555555'
     click_button 'サインアップ'
+    assert_text 'アカウント登録が完了しました。'
     click_link 'ユーザー詳細'
     assert_selector 'h1', text: 'ログインユーザーページ'
     assert_text '名前'
@@ -41,7 +42,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'メールアドレス'
     assert_text 'sample-5@example.com'
     assert_text '郵便番号'
-    assert_text 555_5555 # rubocop:disable Style/NumericLiterals
+    assert_text 5555555 # rubocop:disable Style/NumericLiterals
     assert_text '住所'
     assert_text 'Saitama'
     assert_text 'プロフィール'
@@ -52,7 +53,7 @@ class UserTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'ユーザ自身のレポート'
   end
 
-  test 'editing a User' do # rubocop:disable Metrics/BlockLength
+  test 'ユーザー更新登録' do # rubocop:disable Metrics/BlockLength
     click_link 'ユーザー詳細'
     click_link '編集'
     fill_in '名前', with: 'Rev Hanako Sato'
@@ -64,13 +65,14 @@ class UserTest < ApplicationSystemTestCase
     fill_in 'パスワード再入力', with: 'rev555555'
     fill_in '現在のパスワード', with: '555555'
     click_button 'アップデート'
+    assert_text 'アカウント情報を変更しました。'
     assert_selector 'h1', text: 'ログインユーザーページ'
     assert_text '名前'
     assert_text 'Rev Hanako Sato'
     assert_text 'メールアドレス'
     assert_text 'rev_sample-5@example.com'
     assert_text '郵便番号'
-    assert_text 555_5555 # rubocop:disable Style/NumericLiterals
+    assert_text 5555555 # rubocop:disable Style/NumericLiterals
     assert_text '住所'
     assert_text 'Rev Saitama'
     assert_text 'プロフィール'
@@ -81,10 +83,14 @@ class UserTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'ユーザ自身のレポート'
   end
 
-  test 'destroying a User' do
+  test 'ユーザー登録削除' do
     visit edit_user_registration_path(@user)
     page.accept_confirm do
       click_button 'アカウントをキャンセル'
     end
+    assert_text 'アカウント登録もしくはログインしてください。'
+    assert_selector 'h2', text: 'ログイン'
+    assert_text 'メールアドレス'
+    assert_text 'パスワード'
   end
 end

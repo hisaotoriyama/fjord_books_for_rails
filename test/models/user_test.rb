@@ -3,28 +3,34 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test '#follow' do
-    me = User.create!(email: 'me@example.com', name: 'me', password: 'password')
-    she = User.create!(email: 'she@example.com', name: 'she', password: 'password')
-    me.follow(she)
-    assert me.following?(she)
+  test 'followする' do
+    @user1 = users(:user1)
+    @user2 = users(:user2)
+    @user1.follow(@user2)
+    assert @user1.following?(@user2)
   end
 
-  test '#unfollow' do
-    me = User.create!(email: 'me@example.com', name: 'me', password: 'password')
-    she = User.create!(email: 'she@example.com', name: 'she', password: 'password')
-    follow = me.active_relationships.build(follower_id: 2)
+  test 'unfollowする' do
+    @user1 = users(:user1)
+    @user2 = users(:user2)
+    follow = @user1.active_relationships.create(follower: @user2)
     follow.save
-
-    assert_not me.followed_by?(she)
-    assert she.followed_by?(me)
-    me.follow(she)
-    me.unfollow(she)
-    assert_not me.following?(she)
+    @user1.unfollow(@user2)
+    assert_not @user1.following?(@user2)
   end
 
-  test '#dummy_email_creation' do
-    dummy_user = User.create!(email: 'dummy_user@example.com', name: 'dummy_user', password: 'password', uid: 1, provider: 'github')
-    assert_equal User.dummy_email(dummy_user), '1-github@example.com'
+  test 'dummy-email作成' do
+    dummy_user = users(:user1)
+    assert_equal User.dummy_email(dummy_user), '206669143-github@example.com'
+  end
+
+  test '登録済みユーザー情報取得（githubログイン）' do
+    @user1 = users(:user1)
+    auth = OmniAuth::AuthHash.new({
+                                    uid: '206669143',
+                                    provider: 'github'
+                                  })
+    auth_user = User.find_for_github_oauth(auth)
+    assert_equal(auth_user, @user1)
   end
 end
