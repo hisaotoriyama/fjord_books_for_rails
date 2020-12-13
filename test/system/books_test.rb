@@ -9,7 +9,7 @@ class BooksTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111111 # rubocop:disable Style/NumericLiterals
+    fill_in 'パスワード', with: '111111'
     click_button 'ログイン'
   end
 

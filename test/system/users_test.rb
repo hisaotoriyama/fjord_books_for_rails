@@ -8,7 +8,7 @@ class UserTest < ApplicationSystemTestCase
     @user = users(:user1)
     visit root_path
     fill_in 'メールアドレス', with: 'sample-1@example.com'
-    fill_in 'パスワード', with: 111_111
+    fill_in 'パスワード', with: '111111'
     click_button 'ログイン'
   end
 
@@ -27,7 +27,7 @@ class UserTest < ApplicationSystemTestCase
     click_link 'ログアウト'
     visit new_user_registration_path
     fill_in '名前', with: 'Hanako Sato'
-    fill_in '郵便番号', with: 555_5555 # rubocop:disable Style/NumericLiterals
+    fill_in '郵便番号', with: '555_5555'
     fill_in '住所', with: 'Saitama'
     fill_in 'プロフィール', with: 'HS profile'
     fill_in 'メールアドレス', with: 'sample-5@example.com'
@@ -42,7 +42,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'メールアドレス'
     assert_text 'sample-5@example.com'
     assert_text '郵便番号'
-    assert_text 5555555 # rubocop:disable Style/NumericLiterals
+    assert_text '5555555'
     assert_text '住所'
     assert_text 'Saitama'
     assert_text 'プロフィール'
@@ -57,7 +57,7 @@ class UserTest < ApplicationSystemTestCase
     click_link 'ユーザー詳細'
     click_link '編集'
     fill_in '名前', with: 'Rev Hanako Sato'
-    fill_in '郵便番号', with: 555_5555 # rubocop:disable Style/NumericLiterals
+    fill_in '郵便番号', with: '555_5555'
     fill_in '住所', with: 'Rev Saitama'
     fill_in 'プロフィール', with: 'Rev HS profile'
     fill_in 'メールアドレス', with: 'rev_sample-5@example.com'
@@ -72,7 +72,7 @@ class UserTest < ApplicationSystemTestCase
     assert_text 'メールアドレス'
     assert_text 'rev_sample-5@example.com'
     assert_text '郵便番号'
-    assert_text 5555555 # rubocop:disable Style/NumericLiterals
+    assert_text '5555555'
     assert_text '住所'
     assert_text 'Rev Saitama'
     assert_text 'プロフィール'
