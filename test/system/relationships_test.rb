@@ -35,12 +35,12 @@ class RelationshipTest < ApplicationSystemTestCase
     click_link 'ユーザー一覧'
     assert_selector 'h1', text: 'ユーザー一覧'
     assert_text 'Jiro Kawakami'
-    within 'div[data-testid=@user2.id]' do
+    within 'data-test=@user2.id' do
       assert_text 'フォローする'
     end
     assert_text 'フォローする'
     assert_text 'Saburo Taniguchi'
-    within 'div[data-testid=@user3.id]' do
+    within 'data-testid=@user3.id' do
       assert_text 'フォローする'
     end
   end

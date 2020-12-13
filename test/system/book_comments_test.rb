@@ -32,18 +32,10 @@ class BookCommentsTest < ApplicationSystemTestCase
     visit book_path(@book)
     fill_in 'コメント本文', with: '普通の本'
     click_button '登録する'
-    # assert_text '普通の本'
     click_link 'コメント編集', match: :first
     fill_in 'コメント本文', with: '本のコメント、書き直し'
     click_button '更新する'
-    # assert_selector 'h2', text: 'コメント一覧'
-    # assert_text 'コメント者'
-    # assert_text '206669143'
-    # assert_text 'コメント本文'
     assert_text '本のコメント、書き直し'
-    # assert_text 'コメント作成日時'
-    # assert_text 'コメント編集'
-    # assert_text 'コメント削除'
     assert_text 'コメント更新登録できました。'
   end
 
@@ -51,25 +43,9 @@ class BookCommentsTest < ApplicationSystemTestCase
     visit book_path(@book)
     fill_in 'コメント本文', with: '普通の本'
     click_button '登録する'
-    # assert_text '普通の本'
     page.accept_confirm do
       click_link 'コメント削除', match: :first
     end
     assert_text 'コメント削除できました。'
-    # assert_text '書籍名'
-    # assert_text 'Gone with the wind'
-    # assert_text '補足'
-    # assert_text 'Histric Great Movie'
-    # assert_text '著者'
-    # assert_text 'Margaret Munnerlyn Mitchell'
-    # assert_text '表紙イメージ'
-    # assert_text 'Margaret Munnerlyn Mitchell'
-    # assert_text '編集'
-    # assert_text '戻る'
-    # assert_selector 'h2', text: 'コメント一覧'
-    # assert_text 'コメント者'
-    # assert_text 'コメント本文'
-    # assert_text 'コメント作成日時'
-    # assert_text 'コメント本文'
   end
 end
