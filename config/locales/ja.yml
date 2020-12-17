@@ -123,19 +123,7 @@ ja:
     common:
       show: 表示
       edit: 編集
-      destroy: 削除
-      book:
-        show: 本表示
-        edit: 本編集
-        destroy: 本削除
-      report:
-        show: レポート表示
-        edit: レポート編集
-        destroy: レポート削除
-      comment:
-        show: コメント表示
-        edit: コメント編集
-        destroy: コメント削除       
+      destroy: 削除     
       back: 戻る
       do_follow: フォローする
       do_unfollow: フォロー外す

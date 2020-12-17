@@ -23,8 +23,12 @@ class BookCommentsTest < ApplicationSystemTestCase
     assert_text 'コメント本文'
     assert_text '素晴らしい本'
     assert_text 'コメント作成日時'
-    assert_text 'コメント編集'
-    assert_text 'コメント削除'
+    within '[data-test=user-edit-206669143]' do
+      assert_text '編集'
+    end
+    within '[data-test=user-destroy-206669143]' do
+      assert_text '削除'
+    end
     assert_text 'コメント新規登録できました。'
   end
 
@@ -32,7 +36,9 @@ class BookCommentsTest < ApplicationSystemTestCase
     visit book_path(@book)
     fill_in 'コメント本文', with: '普通の本'
     click_button '登録する'
-    click_link 'コメント編集', match: :first
+    within '[data-test=user-edit-206669143]' do
+      click_link '編集'
+    end
     fill_in 'コメント本文', with: '本のコメント、書き直し'
     click_button '更新する'
     assert_text '本のコメント、書き直し'
@@ -44,7 +50,9 @@ class BookCommentsTest < ApplicationSystemTestCase
     fill_in 'コメント本文', with: '普通の本'
     click_button '登録する'
     page.accept_confirm do
-      click_link 'コメント削除', match: :first
+      within '[data-test=user-destroy-206669143]' do
+        click_link '削除'
+      end
     end
     assert_text 'コメント削除できました。'
   end

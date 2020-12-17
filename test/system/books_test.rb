@@ -52,7 +52,9 @@ class BooksTest < ApplicationSystemTestCase
 
   test '書籍更新登録' do
     visit user_path(@user)
-    click_on '本編集'
+    within '[data-test=user-book-edit-206669143]' do
+      click_on '編集'
+    end
     fill_in '書籍名', with: 'The Good Earth'
     fill_in '補足', with: '大地'
     fill_in '著者', with: 'Pearl Sydenstricker Buck'
@@ -75,7 +77,9 @@ class BooksTest < ApplicationSystemTestCase
 
   test '個別書籍表示' do
     visit user_path(@user)
-    click_on '本表示'
+    within '[data-test=user-book-show-206669143]' do
+      click_on '表示'
+    end
     assert_text '書籍名'
     assert_text 'Gone with the wind'
     assert_text '補足'
@@ -89,7 +93,9 @@ class BooksTest < ApplicationSystemTestCase
   test '書籍登録削除' do
     visit user_path(@user)
     page.accept_confirm do
-      click_on '本削除'
+      within '[data-test=user-book-destroy-206669143]' do
+        click_on '削除'
+      end
     end
     assert_text '削除できました。'
     assert_selector 'h1', text: '書籍一覧'

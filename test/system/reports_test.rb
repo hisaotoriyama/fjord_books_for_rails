@@ -45,7 +45,9 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'レポート更新登録' do
     visit user_path(@user)
-    click_on 'レポート編集'
+    within '[data-test=user-report-edit-206669143]' do
+      click_on '編集'
+    end
     fill_in 'タイトル', with: '明日の天気'
     fill_in '本文', with: '行楽日和'
     click_on '更新する'
@@ -65,7 +67,9 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '個別レポート表示' do
     visit user_path(@user)
-    click_on 'レポート表示'
+    within '[data-test=user-report-show-206669143]' do
+      click_on '表示'
+    end
     assert_text 'タイトル'
     assert_text '本日の天気'
     assert_text '本文'
@@ -74,8 +78,10 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'レポート登録削除' do
     visit user_path(@user)
-    page.accept_confirm do
-      click_on 'レポート削除'
+    within '[data-test=user-report-destroy-206669143]' do
+      page.accept_confirm do
+        click_on '削除'
+      end
     end
     assert_text '削除できました。'
     assert_selector 'h1', text: 'レポート一覧'

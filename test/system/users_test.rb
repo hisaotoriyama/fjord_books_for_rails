@@ -55,7 +55,9 @@ class UserTest < ApplicationSystemTestCase
 
   test 'ユーザー更新登録' do # rubocop:disable Metrics/BlockLength
     click_link 'ユーザー詳細'
-    click_link '編集'
+    within '[data-test=user-206669143]' do
+      click_link '編集'
+    end
     fill_in '名前', with: 'Rev Hanako Sato'
     fill_in '郵便番号', with: '555_5555'
     fill_in '住所', with: 'Rev Saitama'
