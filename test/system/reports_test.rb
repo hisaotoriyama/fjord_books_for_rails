@@ -45,7 +45,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'レポート更新登録' do
     visit user_path(@user)
-    within '[data-test=user-report-edit-206669143]' do
+    within "[data-test=user-report-#{@user.id}]" do
       click_on '編集'
     end
     fill_in 'タイトル', with: '明日の天気'
@@ -67,7 +67,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '個別レポート表示' do
     visit user_path(@user)
-    within '[data-test=user-report-show-206669143]' do
+    within "[data-test=user-report-#{@user.id}]"  do
       click_on '表示'
     end
     assert_text 'タイトル'
@@ -78,7 +78,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'レポート登録削除' do
     visit user_path(@user)
-    within '[data-test=user-report-destroy-206669143]' do
+    within "[data-test=user-report-#{@user.id}]"  do
       page.accept_confirm do
         click_on '削除'
       end

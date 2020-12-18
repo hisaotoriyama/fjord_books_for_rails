@@ -7,7 +7,6 @@ user1:
   profile: TY profile
   provider: github
   uid: 206669143
-
 user2:
   name: Jiro Kawakami
   email: sample-2@example.com
@@ -17,7 +16,6 @@ user2:
   profile: TY profile
   provider: github
   uid: 358143215
-
 user3:
   name: Saburo Taniguchi
   email: sample-3@example.com

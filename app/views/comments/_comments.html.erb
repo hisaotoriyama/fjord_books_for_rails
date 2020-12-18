@@ -18,10 +18,12 @@
           <th><%= comment.user_id %></th>
           <th><%= comment.body %></th>
           <th><%= I18n.l(comment.created_at) %></th>
-          <% if comment.user_id == current_user.id %>
-            <td data-test="user-edit-<%= current_user.id %>"><%= link_to t("views.common.edit"), [:edit, commentable, comment] %></td> 
-            <td data-test="user-destroy-<%= current_user.id %>"><%= link_to t("views.common.destroy"), [commentable, comment], method: :delete, data: { confirm: t(".are_you_sure?") } %></td> 
-          <% end %>
+          <td data-test="user-<%= current_user.id %>">
+            <% if comment.user_id == current_user.id %>
+              <%= link_to t("views.common.edit"), [:edit, commentable, comment] %>
+              <%= link_to t("views.common.destroy"), [commentable, comment], method: :delete, data: { confirm: t(".are_you_sure?") } %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
   </tbody>

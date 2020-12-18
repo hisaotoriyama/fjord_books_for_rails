@@ -19,14 +19,14 @@ class ReportCommentsTest < ApplicationSystemTestCase
     click_button '登録する'
     assert_selector 'h2', text: 'コメント一覧'
     assert_text 'コメント者'
-    assert_text '206669143'
+    assert_text "#{@user.id}"
     assert_text 'コメント本文'
     assert_text '素晴らしいレポート'
     assert_text 'コメント作成日時'
-    within '[data-test=user-edit-206669143]' do
+    within "[data-test=user-#{@user.id}]" do
       assert_text '編集'
     end
-    within '[data-test=user-destroy-206669143]' do
+    within "[data-test=user-#{@user.id}]" do
       assert_text '削除'
     end
     assert_text 'コメント新規登録できました。'
@@ -36,7 +36,7 @@ class ReportCommentsTest < ApplicationSystemTestCase
     visit report_path(@report)
     fill_in 'コメント本文', with: '普通のレポート'
     click_button '登録する'
-    within '[data-test=user-edit-206669143]' do
+    within "[data-test=user-#{@user.id}]" do
       click_link '編集'
     end
     fill_in 'コメント本文', with: 'レポートのコメント、書き直し'
@@ -50,7 +50,7 @@ class ReportCommentsTest < ApplicationSystemTestCase
     fill_in 'コメント本文', with: '普通のレポート'
     click_button '登録する'
     page.accept_confirm do
-      within '[data-test=user-destroy-206669143]' do
+      within "[data-test=user-#{@user.id}]" do
         click_link '削除'
       end
     end

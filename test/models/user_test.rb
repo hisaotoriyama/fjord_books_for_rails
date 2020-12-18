@@ -13,8 +13,7 @@ class UserTest < ActiveSupport::TestCase
   test 'unfollowする' do
     @user1 = users(:user1)
     @user2 = users(:user2)
-    follow = @user1.active_relationships.create(follower: @user2)
-    follow.save
+    @user1.active_relationships.create(follower: @user2)
     @user1.unfollow(@user2)
     assert_not @user1.following?(@user2)
   end

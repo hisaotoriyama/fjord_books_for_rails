@@ -52,7 +52,7 @@ class BooksTest < ApplicationSystemTestCase
 
   test '書籍更新登録' do
     visit user_path(@user)
-    within '[data-test=user-book-edit-206669143]' do
+    within "[data-test=user-book-#{@user.id}]" do
       click_on '編集'
     end
     fill_in '書籍名', with: 'The Good Earth'
@@ -77,7 +77,7 @@ class BooksTest < ApplicationSystemTestCase
 
   test '個別書籍表示' do
     visit user_path(@user)
-    within '[data-test=user-book-show-206669143]' do
+    within "[data-test=user-book-#{@user.id}]"  do
       click_on '表示'
     end
     assert_text '書籍名'
@@ -93,7 +93,7 @@ class BooksTest < ApplicationSystemTestCase
   test '書籍登録削除' do
     visit user_path(@user)
     page.accept_confirm do
-      within '[data-test=user-book-destroy-206669143]' do
+      within "[data-test=user-book-#{@user.id}]"  do
         click_on '削除'
       end
     end

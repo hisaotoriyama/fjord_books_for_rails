@@ -60,11 +60,13 @@
         <td><%= user_book.title %></td>
         <td><%= user_book.memo %></td>
         <td><%= user_book.author %></td>
-        <% if @user == current_user %>
-          <td data-test="user-book-show-<%= current_user.id %>"><%= link_to t("views.common.show"), user_book %></td>
-          <td data-test="user-book-edit-<%= current_user.id %>"><%= link_to t("views.common.edit"), edit_book_path(user_book) %></td>
-          <td data-test="user-book-destroy-<%= current_user.id %>"><%= link_to t("views.common.destroy"), user_book, method: :delete, data: { confirm: t(".are_you_sure?") } %></td>
-        <% end %>
+        <td data-test="user-book-<%= current_user.id %>">
+          <% if @user == current_user %>
+            <%= link_to t("views.common.show"), user_book %>
+            <%= link_to t("views.common.edit"), edit_book_path(user_book) %>
+            <%= link_to t("views.common.destroy"), user_book, method: :delete, data: { confirm: t(".are_you_sure?") } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -95,11 +97,13 @@
         <td><%= user_report.title %></td>
         <td><%= user_report.body %></td>
         <td><%= user_report.user_id %></td>
-        <% if @user == current_user %>
-          <td data-test="user-report-show-<%= current_user.id %>"><%= link_to t("views.common.show"), user_report %></td>
-          <td data-test="user-report-edit-<%= current_user.id %>"><%= link_to t("views.common.edit"), edit_report_path(user_report) %></td>
-          <td data-test="user-report-destroy-<%= current_user.id %>"><%= link_to t("views.common.destroy"), user_report, method: :delete, data: { confirm: t(".are_you_sure?") } %></td>
-        <% end %>
+        <td data-test="user-report-<%= current_user.id %>">
+          <% if @user == current_user %>
+            <%= link_to t("views.common.show"), user_report %>
+            <%= link_to t("views.common.edit"), edit_report_path(user_report) %>
+            <%= link_to t("views.common.destroy"), user_report, method: :delete, data: { confirm: t(".are_you_sure?") } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
