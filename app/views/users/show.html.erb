@@ -14,16 +14,17 @@
 <p><%= User.human_attribute_name :address %>：<%= @user.address %></p>
 <p><%= User.human_attribute_name :profile %>：<%= @user.profile %></p>
 
-<% if @user == current_user %>
-  <%= link_to t("views.common.edit") , edit_user_registration_path %> 
-<% else %>
-  <% if current_user.following?(@user) %>
-    <td><%= link_to t("views.common.do_unfollow"), unfollow_path(@user.id), method: :post %></td>
+<p data-test="user-<%= @user.id %>">
+  <% if @user == current_user %>
+    <%= link_to t("views.common.edit") , edit_user_registration_path %>
   <% else %>
-    <td><%= link_to t("views.common.do_follow"), follow_path(@user.id), method: :post %></td>
+    <% if current_user.following?(@user) %>
+      <%= link_to t("views.common.do_unfollow"), unfollow_path(@user.id), method: :post %>
+    <% else %>
+      <%= link_to t("views.common.do_follow"), follow_path(@user.id), method: :post %>
+    <% end %>
   <% end %>
-<% end %>
-
+</p>
 <h2><%= Relationship.human_attribute_name :following %></h2>
 <p><%= Relationship.human_attribute_name :following_numbers %>：<%= @user.followings.count %></p>
 <ul>
@@ -59,11 +60,13 @@
         <td><%= user_book.title %></td>
         <td><%= user_book.memo %></td>
         <td><%= user_book.author %></td>
-        <% if @user == current_user %>
-          <td><%= link_to t("views.common.show"), user_book %></td>
-          <td><%= link_to t("views.common.edit"), edit_book_path(user_book) %></td>
-          <td><%= link_to t("views.common.destroy"), user_book, method: :delete, data: { confirm: t(".are_you_sure?") } %></td>
-        <% end %>
+        <td data-test="user-book-<%= current_user.id %>">
+          <% if @user == current_user %>
+            <%= link_to t("views.common.show"), user_book %>
+            <%= link_to t("views.common.edit"), edit_book_path(user_book) %>
+            <%= link_to t("views.common.destroy"), user_book, method: :delete, data: { confirm: t(".are_you_sure?") } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -94,11 +97,13 @@
         <td><%= user_report.title %></td>
         <td><%= user_report.body %></td>
         <td><%= user_report.user_id %></td>
-        <% if @user == current_user %>
-          <td><%= link_to t("views.common.show"), user_report %></td>
-          <td><%= link_to t("views.common.edit"), edit_report_path(user_report) %></td>
-          <td><%= link_to t("views.common.destroy"), user_report, method: :delete, data: { confirm: t(".are_you_sure?") } %></td>
-        <% end %>
+        <td data-test="user-report-<%= current_user.id %>">
+          <% if @user == current_user %>
+            <%= link_to t("views.common.show"), user_report %>
+            <%= link_to t("views.common.edit"), edit_report_path(user_report) %>
+            <%= link_to t("views.common.destroy"), user_report, method: :delete, data: { confirm: t(".are_you_sure?") } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

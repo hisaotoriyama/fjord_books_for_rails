@@ -5,14 +5,6 @@ module Users
     before_action :configure_sign_up_params, only: [:create] # rubocop:disable Rails/LexicallyScopedActionFilter
     before_action :configure_account_update_params, only: [:update] # rubocop:disable Rails/LexicallyScopedActionFilter
 
-    def create
-      super
-    end
-
-    def update
-      super
-    end
-
     protected
 
     def update_resource(resource, params)

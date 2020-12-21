@@ -1,51 +1,108 @@
 # frozen_string_literal: true
 
 require 'application_system_test_case'
+# require 'webdrivers'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    @book = books(:book1)
+    @user = users(:user1)
+    visit root_path
+    fill_in 'メールアドレス', with: 'sample-1@example.com'
+    fill_in 'パスワード', with: '111111'
+    click_button 'ログイン'
   end
 
-  test 'visiting the index' do
-    visit books_url
-    assert_selector 'h1', text: 'Books'
+  test '書籍一覧画面展開' do
+    visit books_path
+    assert_selector 'h1', text: '書籍一覧'
+    assert_text '書籍名'
+    assert_text '補足'
+    assert_text '著者'
+    assert_text '表紙イメージ'
+    assert_text 'ユーザーID'
+    assert_text 'ログインユーザー'
+    assert_text 'ログインユーザーID'
   end
 
-  test 'creating a Book' do
-    visit books_url
-    click_on 'New Book'
-
-    fill_in 'Author', with: @book.author
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Picture', with: @book.picture
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
-
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+  test '新規書籍追加' do
+    visit books_path
+    click_on '新規書籍追加'
+    fill_in '書籍名', with: 'Gone with the wind'
+    fill_in '補足', with: 'Histric Great Movie'
+    fill_in '著者', with: 'Margaret Munnerlyn Mitchell'
+    click_button '登録する'
+    assert_text '書籍新規登録できました。'
+    assert_text '書籍名'
+    assert_text 'Gone with the wind'
+    assert_text '補足'
+    assert_text 'Histric Great Movie'
+    assert_text '著者'
+    assert_text 'Margaret Munnerlyn Mitchell'
+    assert_text '表紙イメージ'
+    assert_text 'Margaret Munnerlyn Mitchell'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
   end
 
-  test 'updating a Book' do
-    visit books_url
-    click_on 'Edit', match: :first
-
-    fill_in 'Author', with: @book.author
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Picture', with: @book.picture
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
-
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
-  end
-
-  test 'destroying a Book' do
-    visit books_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
+  test '書籍更新登録' do
+    visit user_path(@user)
+    within "[data-test=user-book-#{@user.id}]" do
+      click_on '編集'
     end
+    fill_in '書籍名', with: 'The Good Earth'
+    fill_in '補足', with: '大地'
+    fill_in '著者', with: 'Pearl Sydenstricker Buck'
+    click_on '更新する'
+    assert_text '書籍更新登録できました。'
+    assert_text '書籍名'
+    assert_text 'The Good Earth'
+    assert_text '補足'
+    assert_text '大地'
+    assert_text '著者'
+    assert_text 'Pearl Sydenstricker Buck'
+    assert_text '編集'
+    assert_text '戻る'
+    assert_selector 'h2', text: 'コメント一覧'
+    assert_text 'コメント者'
+    assert_text 'コメント本文'
+    assert_text 'コメント作成日時'
+    assert_text 'コメント本文'
+  end
 
-    assert_text 'Book was successfully destroyed'
+  test '個別書籍表示' do
+    visit user_path(@user)
+    within "[data-test=user-book-#{@user.id}]"  do
+      click_on '表示'
+    end
+    assert_text '書籍名'
+    assert_text 'Gone with the wind'
+    assert_text '補足'
+    assert_text 'Histric Great Movie'
+    assert_text '著者'
+    assert_text 'Margaret Munnerlyn Mitchell'
+    assert_text '表紙イメージ'
+    assert_text 'Margaret Munnerlyn Mitchell'
+  end
+
+  test '書籍登録削除' do
+    visit user_path(@user)
+    page.accept_confirm do
+      within "[data-test=user-book-#{@user.id}]"  do
+        click_on '削除'
+      end
+    end
+    assert_text '削除できました。'
+    assert_selector 'h1', text: '書籍一覧'
+    assert_text '書籍名'
+    assert_text '補足'
+    assert_text '著者'
+    assert_text '表紙イメージ'
+    assert_text 'ユーザーID'
   end
 end

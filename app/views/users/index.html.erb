@@ -17,15 +17,17 @@
         <td><%= user.id %></td>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
-        <% if user == current_user %>
-           <td>-----</td>
-        <% else %>
-          <% if current_user.following?(user) %>
-            <td><%= link_to t("views.common.do_unfollow"), unfollow_path(user.id), method: :post %></td>
-          <% else %>
-            <td><%= link_to t("views.common.do_follow"), follow_path(user.id), method: :post %></td>
+        <td data-test="user-<%= user.id %>">
+          <% if user == current_user %>
+            -------------
+          <% else %> 
+            <% if current_user.following?(user) %>
+              <%= link_to t("views.common.do_unfollow"), unfollow_path(user.id), method: :post %>
+            <% else %>
+              <%= link_to t("views.common.do_follow"), follow_path(user.id), method: :post %>
+            <% end %>
           <% end %>
-        <% end %>
+        </td>
         <td><%= link_to t("views.common.show_list"), following_user_path(user.id) %></td>
         <td><%= link_to t("views.common.show_list"), follower_user_path(user.id) %></td>
       </tr>

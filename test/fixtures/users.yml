@@ -1,0 +1,27 @@
+user1:
+  name: Taro Yamada
+  email: sample-1@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, '111111') %>
+  zip: 1111111
+  address: Tokyo
+  profile: TY profile
+  provider: github
+  uid: 206669143
+user2:
+  name: Jiro Kawakami
+  email: sample-2@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, '222222') %>
+  zip: 2222222
+  address: Chiba
+  profile: TY profile
+  provider: github
+  uid: 358143215
+user3:
+  name: Saburo Taniguchi
+  email: sample-3@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, '333333') %>
+  zip: 3333333
+  address: Kanagawa
+  profile: TY profile
+  provider: github
+  uid: 576709754
